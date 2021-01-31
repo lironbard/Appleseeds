@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#navbar {
+    color: white;
+    margin: auto;
+    overflow: auto;
+    padding: 10px;
+    padding-left: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#model3 {
+    background: url(./images/model-3-hero-desktop.jfif) no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 800px;
+}
+
+#logo {
+    background: url(./images/WhatsApp\ Image\ 2021-01-30\ at\ 12.43.58.jpeg) no-repeat;
+    color: #ffF;
+    z-index: 1;
+}
+
+ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+li {
+    display: inline;
+}
+
+#title {
+    text-align: center;
+    margin-top: 110px;
+    font-size: 2.5rem;
+    color:white;
+}
+
+h2 {
+    display: inline;
+}
+
+#lower-nav {
+    position: relative;
+    text-align: center;
+    margin-top: 400px;
+    color: white;
+}
+
+#lower-nav-middle{
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+#btn-order {
+    border-radius: 10px;
+    text-align: center;
+    color: #f4f4f4;
+    font-size: 12px;
+    background: none;
+    padding: 5px 7px;
+}
+
+#chat {
+    float: right;
+    /* position: fixed; */
+    margin-bottom: 100px;
+    margin-right: 130px;
+    border-radius: 90px;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Safety */
+
+#safety-main {
+    display: block;
+    position: relative;
+    float: left;
+    padding: 50px;
+}
+
+#safety-right {
+    background: url(./images/model_3_safety_hero.png) no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 800px;
+    width: 65%;
+    float: right;
+}
+
+#safety-left {
+    width: 35%;
+}
+
+
+
+#safety-content {
+    font-size:x-large;
+    font-weight: 100;
+}
+
+#star-card {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #EEEEEE;
+    height: fit-content;
+    width: 95%;
+}
+
+.safety-card {
+    display: block;
+}
+
+.safety-titles {
+    width: 40%;
+}
+
+.safety-stars {
+    width: 40%;
+    float: right;
+}
+
+/* Performance */
+
+#performance {
+    background: url(./images/lhd-performance-hero-desktop.jfif) no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    clear: both;
+    display: block;
+    height: 600px;
+}
+
+#performance-nav {
+    /* position: relative; */
+    text-align: center; 
+    margin-top: 600px;
+    padding-top: 300px;
+    color: white;
+    font-size: 10px;
+    min-width: 100%;
+    min-height: 600px;
+}
+
+#performance-nav-middle{
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+span h2 {
+    margin-top: 110px;
+    font-size: 2rem;
+}
+
+#performance-card {
+    background-color: white;
+    min-height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#btn-order-performance {
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+    background: none;
+    padding: 5px 7px;
+}
+
+#pluse {
+    border: 3px solid black;
+    border-radius: 90px;
+    height: 50px;
+    width:50px;
+
+}
+
+
+
+/* NAVBAR */
+/* #nav-right {
+    float: right;
+}
+
+#nav-middle {
+    text-align: center;
+} */
+
+
+
+/* #safety {
+    background: url(./images/model_3_safety_hero.png) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#performance {
+    background: url(./images/lhd-performance-hero-desktop.jfif) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#all-wheel-drive {
+    background: url(./images/lhd-awd-hero-desktop.jfif) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#range {
+    background: url(./images/lhd-range-hero-desktop.jfif) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#autopilot {
+    background: url(./images/autopilot-poster.png) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#interior {
+    background: url(./images/lhd-interior-hero-desktop.jfif) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#specs {
+    background: url(./images/global-spec-hero.png) no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+#order {
+    background: url(./images/global-order-hero.png) no-repeat;
+    width: 100%;
+    height: 600px;
+} */
+
+
+/* text-decoration: none;
+    opacity: 0.5;
+
+
+    .btn {
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+*/
