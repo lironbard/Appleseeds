@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query Exercise</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: grey;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            display: none;
+        }
+ 
+        /* Smartphones */
+
+        @media only screen and (max-width: 500px) {
+            body {
+                background: red;
+            }
+
+            #smartphone p {
+                display: block;
+                font-size: 12px;
+            }
+        }
+
+            /* Tablet */
+
+            @media(min-width: 501px) and (max-width: 768px) {
+            body {
+                background: blue;
+            }
+
+            #tablet p {
+                display: block;
+                font-size: 16px;
+            }
+        }
+
+            /* Normal */
+
+            @media(min-width: 769px) and (max-width: 1200px) {
+            body {
+                background: green;
+            }
+
+            #normal p {
+                display: block;
+                font-size: 20px;
+            }
+        }
+
+                /* Widescreen */
+
+            @media(min-width: 1201px) {
+            body {
+                background: black;
+            }
+
+            #widescreen p {
+                display: block;
+                font-size: 24px;
+            }
+        }
+
+
+                /* Landscape */
+
+            @media(max-height: 500px) {
+            body {
+                background: orange;
+            }
+
+            #widescreen p {
+                display: block;
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="widescreen"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, saepe.</p></div>
+    <div id="normal"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis a, delectus maiores nesciunt facilis amet?</p></div>
+    <div id="tablet"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem similique iusto libero temporibus beatae ex itaque deserunt! Qui, officiis consequuntur!</p></div>
+    <div id="smartphone"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad vero quis, omnis earum dicta neque. Vero tempora deserunt laudantium modi saepe. Saepe, nesciunt explicabo?</p></div>
+    <div id="landscape"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius cumque consequuntur, deleniti architecto, eum tempora facere consectetur alias deserunt, consequatur error expedita neque ullam quis omnis debitis nostrum reprehenderit. Consectetur.</p></div>
+
+
+    
+    
+</body>
+</html>

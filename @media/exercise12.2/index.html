@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query Exercise</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: grey;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+            display: inline-block;
+        }
+
+        div {
+            width: 20%;
+            color: orange;
+            display: inline-block;
+        }
+
+        /* Smartphones */
+
+        @media only screen and (max-width: 500px) {
+            body {
+                background: red;
+            }
+
+            div {
+                display: block;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+        <div id="widescreen"><h1>First item</h1><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, saepe.</p></div>
+        <div id="normal"><h1>Second item</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae?</p></div>
+        <div id="tablet"><h1>Third item</h1><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, maxime!</p></div>
+        <div id="smartphone"><h1>Fourth item</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, facilis!</p></div>
+
+ 
+</body>
+</html>
