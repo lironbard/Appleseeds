@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.box {
+    background: lightgray;
+    border: 2px #777 solid;
+    padding: 10px;
+    margin: 10px;
+}
+
+.box h3 {
+    padding-bottom: 10px;
+}
+
+.clr {
+    clear: both;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4e;
+}
+
+p {
+    text-align: justify;
+}
+
+#header {
+    text-align: center;
+    background-color: orange;
+}
+
+#side {
+    background-color: lightgreen;
+    float: left;
+    width: 30%;
+}
+
+#main {
+    background-color: blueviolet;
+    text-align: right;
+    float:right;
+    width: 63%;
+    height:max-content;
+}
+
+#footer {
+    background-color: cadetblue;
+    text-align: center;
+}
+
+/*
+|-------header--------|   
+
+|side----|--------main|
+
+|-------footer--------|
+
+ */
+
+
+
+  /* Media Query */
+
+
+
+/* Smartphones */
+
+@media only screen and (max-width: 500px) {
+    #side {
+        display: none   ;
+    }
+
+    #main {
+        width: auto;
+        background: blueviolet;
+        border: 2px #777 solid;
+        padding: 10px;
+        margin: 10px;
+    }
+
+}
