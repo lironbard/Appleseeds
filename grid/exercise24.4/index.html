@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Exercise 24.4</title>
+    <style>
+      
+      body{
+        font-family: sans-serif;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(8, 10vw);
+        padding: 15px;
+        grid-gap: 15px;
+      }
+
+      .header,
+      .content,
+      .sidebar,
+      .sidebar2,
+      .footer,
+      .box1, .box2 {
+        border: 1px #ccc solid;
+        padding: 0.5rem;
+        border-radius: 20px;
+      }
+
+      .header {
+        background: url(./images/gal-1.jpeg) no-repeat center center/cover; 
+        grid-area: header;
+      }
+
+      .content {
+        background: url(./images/gal-2.jpeg) no-repeat center center/cover; 
+        grid-area: content;
+      }
+
+      .sidebar {
+        background: url(./images/gal-3.jpeg) no-repeat center center/cover; 
+        grid-area: sidebar;
+      }
+
+      .sidebar2 {
+        background: url(./images/gal-4.jpeg) no-repeat center center/cover; 
+        grid-area: sidebar2;
+      }
+
+      .footer {
+        background: url(./images/gal-5.jpeg) no-repeat center center/cover; 
+        grid-area: footer;
+        text-align: center;
+      }
+
+      .box1 {
+        background: url(./images/gal-6.jpeg) no-repeat center center/cover; 
+        grid-area: box1;
+      }
+
+      .box2 {
+        background: url(./images/gal-7.jpeg) no-repeat center center/cover; 
+        grid-area: box2;
+      }
+
+      @media(max-width: 767px) {
+        .container {
+          grid-template-areas:
+          'header'
+          'sidebar'
+          'content'
+          'sidebar2'
+          'footer'
+          'box1'
+          'box2'
+        }
+      }
+
+      @media(min-width: 768px) and (max-width: 1024px) {
+        .container {
+          grid-template-areas:
+          'header header header header'
+          'sidebar content content content'
+          'sidebar2 sidebar2 sidebar2 sidebar2'
+          'footer footer footer footer';
+        }
+      }
+
+      @media(min-width: 1025px) {
+        .container {
+          grid-template-areas:
+          'header header header header'
+          'sidebar content content sidebar2'
+          'footer footer footer footer';
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header"></header>
+      <aside class="sidebar"></aside>
+      <div class="content"></div>
+      <aside class="sidebar2"></aside>
+      <footer class="footer"></footer>
+      <header class="box1"></header>
+      <aside class="box2"></aside>
+      <div class="box3"></div>
+      <aside class="box4"></aside>
+      <footer class="box5"></footer>
+    </div>
+  </body>
+</html>

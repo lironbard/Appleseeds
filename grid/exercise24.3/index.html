@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Grid Template Areas</title>
+    <style>
+      
+      body{
+        font-family: sans-serif;
+      }
+
+      .container {
+        display: grid;
+        grid-template-areas:
+          'header header header header'
+          'sidebar content content content'
+          'sidebar2 sidebar2 sidebar2 sidebar2'
+          'footer footer footer footer';
+        grid-gap: 1rem;
+      }
+
+      .header,
+      .content,
+      .sidebar,
+      .sidebar2,
+      .footer {
+        border: 1px #ccc solid;
+        padding: 0.5rem;
+        border-radius: 20px;
+      }
+
+      .header {
+        background: crimson;
+        grid-area: header;
+      }
+
+      .content {
+        background: lightgreen;
+        grid-area: content;
+      }
+
+      .sidebar {
+        background: skyblue;
+        grid-area: sidebar;
+      }
+
+      .sidebar2 {
+        background: purple;
+        grid-area: sidebar2;
+      }
+
+      .footer {
+        background: yellow;
+        grid-area: footer;
+        text-align: center;
+      }
+
+      @media(max-width: 767px) {
+        .container {
+          grid-template-areas:
+          'header'
+          'sidebar'
+          'content'
+          'sidebar2'
+          'footer'
+        }
+      }
+
+      @media(min-width: 768px) and (max-width: 1024px) {
+        .container {
+          grid-template-areas:
+          'header header header header'
+          'sidebar content content content'
+          'sidebar2 sidebar2 sidebar2 sidebar2'
+          'footer footer footer footer';
+        }
+      }
+
+      @media(min-width: 1025px) {
+        .container {
+          grid-template-areas:
+          'header header header header'
+          'sidebar content content sidebar2'
+          'footer footer footer footer';
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Header</h1>
+      </header>
+      <aside class="sidebar">
+        <h2>Sidebar</h2>
+      </aside>
+      <div class="content">
+        <h3>Content</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, blanditiis?</p>
+      </div>
+      <aside class="sidebar2">
+        <h2>Sidebar2</h2>
+      </aside>
+      <footer class="footer"><h3>Footer</h3></footer>
+    </div>
+  </body>
+</html>
