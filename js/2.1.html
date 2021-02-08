@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2.1</title>
+</head>
+<body>
+    <script>
+    // Write a function called 'describeCountry' which takes
+    // three parameters:
+    // 'country', 'population' and 'capitalCity'. Based on this input,the
+    // function returns a string with this format: 'Finland has 6
+    // million people and its capital city is Helsinki'
+    // 2. Call this function 3 times, with input data for 3 different
+    // countries. Store the returned values in 3 different variables,
+    // and log them to the console.
+
+    function describeCountry(country,population,capitalCity) {
+        console.log(`'${country} has ${population} million people and its capital city is ${capitalCity}'`);
+    }
+
+    const total1 = describeCountry(ISR,9,TA);
+    console.log(total1);
+    const total2 = describeCountry(ENG,24,LONDON);
+    console.log(total2);
+    const total3 = describeCountry(Italy,23,Roma);
+    console.log(total2);
+    </script>
+</body>
+</html>

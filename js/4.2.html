@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4.2</title>
+</head>
+<body>
+
+    <script>
+        // Create a function that takes 1 argument, a number score.
+        // Returns either “A”, ”B”, “C”, “D”, “F”.
+        // score of:
+        // 0-64 is a “F”
+        // 65-69 is a “D”
+        // 70-79 is a “C”
+        // 80-89 is a “B”
+        // 90-100 is an “A
+
+        
+
+        function grades(number) {
+            if (number >= 0 && number <= 64){
+                console.log("F");
+            } else if (number >= 65 && number <= 69){
+                console.log("D");
+            } else if (number >= 70 && number <= 79){
+                console.log("C");
+            } else if (number >= 80 & number <= 89){
+                console.log("B");
+            } else if (number >= 90 && number <= 100){
+                console.log("A");
+            }
+        }
+
+            grades(80);
+
+
+
+    </script>
+    
+</body>
+</html>

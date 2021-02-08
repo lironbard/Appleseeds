@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2.3</title>
+</head>
+<body>
+    <script>
+        // Write a function that calculates the circle area by a given radius as an
+        // argument. Print the area as it is calculated and then print it rounded to two
+        // decimal places. .toFixed(2)
+
+
+    var res = 0;
+    var p = 0;
+    function circleArea(radius) {
+        p = (2 * 3.14 * radius);
+        console.log(`The circle area is: ${p}'`);
+        console.log(`The rounded circle area is: ${p.toFixed(2)}'`);
+        
+    }
+
+    console.log(circleArea(3));
+
+    </script>
+</body>
+</html>

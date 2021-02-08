@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4.3</title>
+</head>
+<body>
+
+    <script>
+        // John and Mike both play basketball in different teams. In the latest 3 games,
+        // John's team scored 89, 120 and 103 points, while Mike's team scored 116, 94
+        // and 123 points.
+        // 1. Calculate the average score for each team
+        // 2. Decide which teams wins in average (highest average score), and print the
+        // winner to the console. Also include the average score in the output.
+        // 3. Then change the scores to show different winners. Don't forget to take into
+        // account there might be a draw (the same average score)
+        // 4. EXTRA: Mary also plays basketball, and her team scored 97, 134 and 105
+        // points. Like before, log the average winner to the console.
+        // 5. Like before, change the scores to generate different winners, keeping in
+        // mind there might be draws.
+
+
+       
+        function team(score1,score2,score3) {
+            avg = ((score1+score2+score3)/3)
+            console.log(avg);
+            return avg;
+        }
+
+        var john = team(89,120,103);
+        var mike = team(116,94,123);
+        var mary = team(97,134,105);
+
+        if (john > mike && john > mary){
+                console.log(`team John Won!`);
+            } else if (mike > john && mike > mary) {
+                console.log(`team Mike Won!`);
+            } else if (mary > mike && mary > john) {
+                console.log(`team Mary Won!`);
+            } else {
+                console.log(`DRAW!!`);
+            }
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
