@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5.4</title>
+</head>
+<body>
+
+    <script>
+        // instructions
+        // Create a function that receives one argument, a string color.
+        // Create a switch statement that:
+        // 1. If the color is yellow, pink or orange return from the function “light color”.
+        // 2. If the color is blue, purple, brown return from the function “dark color”.
+        // 3. If the color is none of the above return “Unknown color”.
+        // Note:
+        // It shouldn’t be case sensitive
+
+        function colored(color){
+            switch (color) {
+                case 'yellow':
+                case 'pink':
+                case 'orange':
+                    console.log('light color');
+                    break;
+                case 'blue':
+                case 'purple':
+                case 'brown':
+                    console.log('dark color');
+                    break;
+                default:
+                    console.log('Unknown color');
+            }
+        }
+
+        colored('pink');
+
+        
+    </script>
+    
+</body>
+</html>

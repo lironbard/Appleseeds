@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3.3</title>
+</head>
+<body>
+
+    <script>
+        // The world population is 7900 million people. Create a
+        // function declaration called 'percentageOfWorld1' which
+        // receives a 'population' value, and returns the percentage of
+        // the world population that the given population represents.
+        // For example, China has 1441 million people, so it's about
+        // 18.2% of the world population.
+        // 2. To calculate the percentage, divide the given 'population'
+        // value by 7900 and then multiply by 100
+        // 3. Call 'percentageOfWorld1' for 3 populations of countries
+        // of your choice, store the results into variables, and log
+        // them to the console
+
+        
+        var country = 0;
+        function percentageOfWorld1(country) {
+            let population = 7900;
+            return ((country /population)*100);
+        }
+
+        var england = 20;
+        const country1 = percentageOfWorld1(england);
+        console.log(country1);
+
+        var israel = 0.9;
+        const country2 = percentageOfWorld1(israel);
+        console.log(country2);
+
+        var india = 1200;
+        const country3 = percentageOfWorld1(india);
+        console.log(country3);
+
+        // 4. Create a function expression which does the exact same
+        // thing, called 'percentageOfWorld2', and also call it with 3
+        // country populations (can be the same populations).
+        const percentageOfWorld2 = (population) => {((england /population)*100)};
+        const percentageOfWorld2 = (population) => {((israel /population)*100)};
+        const percentageOfWorld2 = (population) => {((india /population)*100)};
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excersice 6.2</title>
+</head>
+<body>
+
+    <script>
+        // For each of the questions below, answer the question’s with this array:
+        // const people = ["Greg", "Mary", "Devon", "James"];
+        // 1. Using a loop, iterate through this array and console.log all of the people.
+        // 2. Write the command to remove "Greg" from the array.
+        // 3. Write the command to remove "James" from the array.
+        // 4. Write the command to add "Matt" to the front of the array.
+        // 5. Write the command to add your name to the end of the array.
+        // 6. Using a loop, iterate through this array and after console.log-ing "Mary",
+        // exit from the loop.
+        // 7. Write the command to make a copy of the array using slice. The copy
+        // should NOT include "Mary" or "Matt".
+        // 8. Write the command that gives the indexOf where "Mary" is located.
+        // 9. Write the command that gives the indexOf where "Foo" is located (this
+        // should return -1).
+        // 10. Redefine the people variable with the value you started with. Using the
+        // splice command, remove "Devon" from the array and add "Elizabeth" 
+        // and "Artie". Your array should look like this when you are done ["Greg",
+        // "Mary", "Elizabeth", "Artie", "James"].
+        // 11. Create a new variable called withBob and set it equal to the people
+        // array concatenated with the string of "Bob"
+
+        const people = ["Greg", "Mary", "Devon", "James"];
+
+        for (var i = 0; i < people.length ; i++) {
+            console.log(people[i]);
+        }
+
+        people.pop();
+        console.log(people);
+
+        people.unshift("Matt");
+        console.log(people);
+
+        people.push("Liron");
+        console.log(people);
+
+        // 6. Using a loop, iterate through this array and after console.log-ing "Mary",
+        // exit from the loop.
+
+        // for (var i = 0; i < people.length ; i++){
+        //     console.log(people[i]);
+        //     if (people[i] === "Mary"){
+        //         break;
+        //     }
+        // }
+
+        // 7. Write the command to make a copy of the array using slice. The copy
+        // should NOT include "Mary" or "Matt".
+        //["Matt", "Greg", "Mary", "Devon", "Liron"]
+        console.log(people);
+
+        const sliced = [...people.slice(1,2),...people.slice(3,5)]
+        console.log(sliced);
+
+        // 8. Write the command that gives the indexOf where "Mary" is located.
+
+        console.log(people.indexOf("Mary"));
+        
+        // 9. Write the command that gives the indexOf where "Foo" is located (this
+        // should return -1).
+
+        console.log(people.indexOf("Foo"));
+        // 10. Redefine the people variable with the value you started with. Using the
+        // splice command, remove "Devon" from the array and add "Elizabeth" 
+        // and "Artie". Your array should look like this when you are done ["Greg",
+        // "Mary", "Elizabeth", "Artie", "James"].
+
+        const people2 = ["Greg", "Mary", "Devon", "James"];
+
+        const spliced = [...people2.splice(1,1),'Elizabeth','Artie',...people2.splice(2)];
+        //const spliced = people2.splice(2,1);
+        console.log(spliced);
+        //console.log(people2);
+
+        // 11. Create a new variable called withBob and set it equal to the people
+        // array concatenated with the string of "Bob"
+
+        const withBob = "Bob";
+        const res = spliced.concat(withBob);
+        console.log(res);
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

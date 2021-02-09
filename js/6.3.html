@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 6.3</title>
+</head>
+<body>
+
+    <script>
+
+        // Write a function that will receive an array of strings and will return a new
+        // array containing all the lengths of all the strings in the array it got as a
+        // parameter.
+        // So that if you call this function with this array for example:
+        // ["boo", "doooo", "hoo","ro"]
+        // it will return this array: [3, 5, 3, 2].
+        var arrayTest = ["boo", "doooo", "hoo","ro"];
+        var newArray = [];
+        var temp = 0;
+
+        function charLengths() {
+            for (let i = 0; i < arrayTest.length; i++){
+                console.log(arrayTest.length);
+                temp = arrayTest[i].length;
+                console.log(temp);
+                newArray[i] = temp;
+            }
+        }
+
+        charLengths(arrayTest);
+        console.log(newArray);
+
+
+        //array.from({length:arr.length})
+        //objext.values()
+
+    </script>
+    
+</body>
+</html>
