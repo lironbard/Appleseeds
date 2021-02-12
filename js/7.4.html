@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7.4</title>
+</head>
+<body>
+
+    <script>
+
+        // Instructions
+        // Here is a candyStore object:
+
+        // 1. Implement the following getCandy function:
+        // The function should return the candy element with the specified id.
+        // function getCandy(candyStore, id){
+        // //your code
+        // }
+        // 2. Implement the following getPrice function:
+        // function getPrice(candyStore, id){
+        // //your code
+        // }
+        // The function should return the price (number) of the candy with the specified
+        // id.
+        // 3. Implement the following addCandy function:
+        // The function should add a new candy to the candy list in candyStore with a
+        // default amount of 1. The function will not return anything.
+        // function addCandy(candyStore, id, name, price){
+        // //your code
+        // }
+        // 4. Implement the following buy function: The function should add the candy
+        // price to the cashRegister, and decrease the amount property of the relevant
+        // candy.
+        // function buy(candyStore, id){
+        // //your code
+        //  }
+
+        const candyStore = {    
+            candies: [
+            {
+                name: "mint gum",
+                id: "as12f",
+                price: 2,
+                amount: 2,
+            },
+            {
+                name: "twix",
+                id: "5hd7y",
+                price: 5,
+                amount: 4,
+            },
+        ],
+        cashRegister: 200,
+        }
+
+            // The function should return the candy element with the specified id.
+            let objId;
+            function getCandy(candyStore,id) {
+                for (let i = 0; i < candyStore.candies.length ; i++) {
+                    if (candyStore.candies[i].id === id){
+                        objId = candyStore.candies[i];
+                    }
+                }
+            return objId;
+            }
+
+        //console.log(getCandy(candyStore,"as12f"));
+
+        // 2.The function should return the price (number) of the candy with the specified id.
+         var objPrice = 0;
+
+        function getPrice(candyStore, id) {
+            for (let i = 0; i < candyStore.candies.length ; i++) {
+                    if (candyStore.candies[i].id === id){
+                        objPrice = candyStore.candies[i].price;
+                        //console.log(candyStore.candies[i].price);
+                    }
+                }
+            return objPrice;
+        }
+
+        console.log(getPrice(candyStore,"as12f"));
+
+        // 3. Implement the following addCandy function:
+        // The function should add a new candy to the candy list in candyStore with a
+        // default amount of 1. The function will not return anything.
+
+        
+        function addCandy(candyStore, id, name, price){
+            candyStore.candies.push({name,id,price,amount:1});
+        }
+        addCandy(candyStore,"1111","Kinder", 20);
+        console.log(candyStore.candies);
+
+
+        // 4. Implement the following buy function: The function should add the candy
+        // price to the cashRegister, and decrease the amount property of the relevant
+        // candy.
+  
+        
+        function buy(candyStore, id){
+            for (let i = 0; i < candyStore.candies.length ; i++) {
+                    if (candyStore.candies[i].id === id){
+                        candyStore.candies[i].amount -= 1;
+                        console.log(candyStore.candies[i].amount);
+                        candyStore.cashRegister += candyStore.candies[i].price;
+                    }
+                }
+        }
+
+        buy(candyStore,"1111");
+        //console.log(candyStore.candies);
+        console.log(candyStore.cashRegister);
+
+
+
+
+    </script>
+    
+</body>
+</html>

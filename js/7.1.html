@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7.1</title>
+</head>
+<body>
+    
+   <script>
+    //    1. Create an object that represents a book. It should have
+    //     4-5 properties that make sense for a book to have.
+    //     2. Then write a function that has one argument, a book,
+    //     that will return the following description from your book
+    //     object:
+    //     `The book <book name> was written by <author name> in
+    //     the year <publishing yeary
+
+    const book = {
+        name: 'Harry Poter',
+        numOfPages: 400,
+        cover: "hard",
+        price: 130,
+        year: 2004,
+    }
+
+    function description(book){
+        console.log(`The book ${book.name} has ${book.numOfPages} pages, was written in the year ${book.year} and it's cover is ${book.cover} at the price of ${book.price} `);
+    }
+
+    description(book);
+
+   </script>
+
+</body>
+</html>

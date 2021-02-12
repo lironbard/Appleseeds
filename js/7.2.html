@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7.2</title>
+</head>
+<body>
+
+    <script>
+
+        // Instructions
+        // 1. Create an object called ‘mycountry’ for a country of your choice,
+        // containing properties ‘country’, ‘capital’, ‘language’, ‘population’
+        // and ‘neighbours’ (an array)
+        // 2. Add a method to the object called 'describe' to the 'myCountry'
+        // object. With the help of the ‘this’ keyword, this method will log a
+        // string like this to the console:
+        // ‘Finland has 6 million people, their mother tongue is Finnish, they
+        // have 3 neighbouring countries and a capital called Helsinki’.
+        // 3. Call the ‘descrbie method’.
+        // 4. Add a method called 'checkIsland' to the 'myCountry' object.
+        // This method will set a new property on the object, called 'isIsland'.
+        // 'isIsland' will be true if there are no neighbouring countries, and
+        // false if there are. Use the ternary operator to set the property
+
+        const mycountry = {
+            country: "England",
+            capital: "London",
+            language: "English",
+            population: 56,
+            neighbours: 1,
+
+            describe: function(countries) {
+                console.log(`${mycountry.country} has ${mycountry.population} million people, their mother tongue is ${mycountry.language}, they have ${mycountry.neighbours} neighbouring countries and a capital called ${mycountry.capital}`);
+            },
+
+            checkIsland: function() {
+                this.neighbours.length > 0 ? this.isIsland = true : this.isIsland = false;
+            }
+        }
+
+        console.log(mycountry.describe());
+        mycountry.checkIsland();
+        console.log(mycountry);
+
+
+    </script>
+    
+</body>
+</html>
