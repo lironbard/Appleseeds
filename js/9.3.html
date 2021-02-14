@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 9.3</title>
+</head>
+<body>
+
+    <script>
+
+        // a. Array of words
+        // a.1. Sort the array of strings from descending to ascending
+        // order
+        const foods = ["falafel", "sabich", "hummus", "pizza with extra pineapple"];
+        foods.sort();
+        console.log(foods);
+
+        // a.2. Sort the array of strings from descending to ascending
+        // order.
+        foods.reverse();
+        console.log(foods);
+        // b. Lets sort an array of words that includes a word with an
+        // uppercase:
+
+        const foodsWithUpperCase = [
+         "Falafel",
+         "Sabich",
+         "hummus",
+         "pizza with extra pineapple",
+        ];
+        console.log(foodsWithUpperCase);
+
+        // b.1. Sort the array of strings from descending to ascending
+        // order.
+        
+        foodsWithUpperCase.sort(function(a,b) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        if( a == b) return 0;
+        return a < b ? -1 : 1;
+        });
+
+        console.log(foodsWithUpperCase);
+        
+        // b.2. Sort the array of strings from descending to ascending
+        // order.
+
+        foodsWithUpperCase.sort(function(a,b) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        if( a == b) return 0;
+        return a > b ? -1 : 1;
+        });
+
+        console.log(foodsWithUpperCase);
+
+
+
+
+        // c. Longest word
+
+        const words = ["apple", "supercalifragilisticexpialidocious","hi", "zoo"];
+
+        // c.1. Sort the array of strings from the longest word to the
+        // shortest word only using the sort function
+
+        words.sort(function(a, b){
+        // ASC  -> a.length - b.length
+        // DESC -> b.length - a.length
+        return b.length - a.length;
+        });
+
+        console.log(words);
+
+    </script>
+    
+</body>
+</html>
