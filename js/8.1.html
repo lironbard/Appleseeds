@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8.1</title>
+</head>
+<body>
+    <script>
+
+        // 1. Create 3 separate objects that their key is called name
+        // and their value is a string. Store them in separate
+        // variables.
+        // 2. Create a new Map object that sets each object as a key
+        // and assign an id number as the value.
+        // 3. Iterate over the Map object with the for..of loop.
+        // - log the name and id
+
+        
+        let person1 = {
+            name: 'rishon',
+        }
+        let person2 = {
+            name: 'sheni',
+        }
+        let person3 = {
+            name: 'shlishi',
+        }
+
+        const persons = new Map();       
+
+        persons.set(person1, 111);
+        persons.set(person2, 222);
+        persons.set(person3, 333);
+
+        for(let[key,value] of persons) {
+            console.log(key.name +" " + value);
+        }
+
+        console.log(persons);
+
+
+    </script>
+    
+</body>
+</html>

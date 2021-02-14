@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8.2</title>
+</head>
+<body>
+
+    <script>
+        // const maxCount = 1000000;
+        // console.time("My operation")// <---- Starts the timer
+        // for(let i =0; i < maxCount; i++){
+        // //Perform the operation to be measured multiple times
+        // } console.timeEnd("My operation") // <---- Stops the time
+
+
+        // Setup:
+        // 1. Who can add key and value pairs faster in a for loop?
+        // • Create an empty Object and assign it to a variable.
+        // • Create a start timer for your object to be measured.
+        // • Create a for loop that will iterate a million times. Inside
+        // your for loop on each iteration create a new key, value
+        // pair to your object using the variable I.
+        // • Do the same procedure for a Map object.
+        // • Compare the times.
+        // You may be surprised from the results :
+
+        
+        let timeObjFor = {
+        }
+
+        console.time("For Timer")// <---- Starts the timer
+        for (let i = 0; i < 10000; i++){
+            timeObjFor[i] ={key:i,value:i};
+        }
+        console.timeEnd("For Timer") // <---- Stops the time
+        
+        console.time("Finding for value")// <---- Starts the timer
+            for (let i = 0; i < 10000; i++){
+                //console.log(timeObjFor[5000]);
+                timeObjFor ={key:5000};
+            }
+            //console.log(timeObjFor ={key:5000,value:5000});
+        console.timeEnd("Finding for value")// <---- Stops the timer
+
+        console.time("Adding Single Obj Entry")// <---- Starts the timer
+            timeObjFor[600] ={key:"lala",value:"dada"};
+        console.timeEnd("Adding Single Obj Entry") // <---- Stops the time
+
+        console.time("Deleting Single Obj Entry")// <---- Starts the timer
+            delete timeObjFor.lala;
+        console.timeEnd("Deleting Single Obj Entry") // <---- Stops the time
+
+
+        
+
+        // -------------- MAP -------------\\
+        let timeObjMap = {
+
+        }
+        const timeMap = new Map();
+        console.time("My MAP operation")// <---- Starts the timer
+
+        for (let i = 0; i < 1000000; i++){
+            timeMap.set(timeObjMap, i);
+        }
+
+        console.timeEnd("My MAP operation") // <---- Stops the time
+
+        console.time("Finding MAP value")// <---- Starts the timer
+        for(let[key,value] of timeMap) {
+            console.log(timeMap.get(timeObjMap, 5000));
+        }
+        console.timeEnd("Finding MAP value") // <---- Stops the time
+
+        console.time("Adding Single MAP Entry")// <---- Starts the timer
+            timeMap.set("ok", "cool");
+        console.timeEnd("Adding Single MAP Entry") // <---- Stops the time
+        // ---- Map Single entry is faster -> 0.007ms / 0.04ms
+
+        //Who is faster in deleting a single entry?
+        console.time("Deleting Single MAP Entry")// <---- Starts the timer
+            console.log(timeMap.delete("ok"));
+        console.timeEnd("Deleting Single MAP Entry") // <---- Stops the time
+
+        // Deleting single entry was faster on the non-Mapped Object -> 0.02ms / 0.47ms
+        
+         
+
+
+    </script>
+    
+</body>
+</html>
