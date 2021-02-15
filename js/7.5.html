@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7.5</title>
+</head>
+<body>
+
+    <script>
+
+        // Instructions
+        // Create a function that takes one argument, an array.
+        // Use this array:
+        const myArr = ["Hello", "Good Day", "Your Welcome", "hotdog","hamburgers"];
+
+        
+        
+        // to count over all the letters and return an object with the
+        // letter as the key and the letter count as the value.
+        // Expected output:
+        // { h: 3, e: 4, l: 3, o: 7, g: 3, d: 3, a: 2, y: 2, u: 2, r: 3, w: 1, c:
+        // 1, m: 2, t: 1, b: 1, s: 1 }
+        // Note:
+        // that it shouldn’t be case sensitive
+
+            const counter = (myArr) => {
+                const joined = myArr.join("").toLowerCase("").split("");
+                console.log(joined);
+                const splited = {};
+                for (let i = 0; i < joined.length; i++){
+                    if (joined[i] === " ") {
+                        continue;
+                    }
+                    if (splited[joined[i]]) {
+                        splited[joined[i]] = splited[joined[i]] + 1
+                    }else {
+                        splited[joined[i]] = 1;
+                    }
+                }
+
+                const firstLetter = Object.keys(splited).sort((a,b) => {
+                    return splited[b] - splited[a];
+                });
+
+                return [splited , firstLetter[0]];
+            };
+
+            console.log(counter(myArr)); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //     var counts = {};
+
+        // function counter(myArr){
+        //     let counts = {};
+        //     myArr = myArr.join("").split("");
+        //     myArr.sort();
+        //     myArr.forEach((v) => (counts[v] = (counts[v])? ++counts[v] : 1))
+        // }
+
+        // console.log(counts);
+
+    </script>
+    
+</body>
+</html>
