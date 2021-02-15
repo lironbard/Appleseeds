@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 10.3</title>
+</head>
+<body>
+    
+    <script>
+
+        const data = [
+        {
+        name: "John",
+        birthday: "1-1-1995",
+        favoriteFoods: {
+        meats: ["hamburgers", "sausages"],
+        fish: ["salmon", "pike"],
+        },
+        },
+        {
+        name: "Mark",
+        birthday: "10-5-1980",
+        favoriteFoods: {
+        meats: ["hamburgers", "steak", "lamb"],
+        fish: ["tuna", "salmon", "barracuda"],
+        },
+        },
+        {
+        name: "Mary",
+        birthday: "1-10-1977",
+        favoriteFoods: {
+        meats: ["ham", "chicken"],
+        fish: ["pike"],
+        },
+        },
+        {
+        name: "Thomas",
+        birthday: "1-10-1990",
+        favoriteFoods: {
+        meats: ["bird", "rooster"],
+        fish: ["salmon"],
+        },
+        },
+        {
+        name: "Mary",
+        birthday: "1-10-1977",
+        favoriteFoods: {
+        meats: ["hamburgers", "lamb"],
+        fish: ["anchovies", "tuna"],
+        },
+        },
+        ];
+
+        // Create separate functions for each questions below:
+        // 1. Create a function that returns all the names from the array.
+        const names = (arr) => {
+            return arr.map((element) => {
+                return element.name;
+            })
+        }
+
+        console.log(names(data)); 
+
+        // 2. Create a function that returns all the objects that are born before 1990.
+        const bday = (arr) => {
+            return arr.filter((element) => {
+                const splited = element.birthday.split("-");
+                //console.log(splited);
+                const year = splited[2];
+                return year < 1990 ? element : console.log("nop");;
+
+            })
+        }
+
+        console.log(bday(data));
+
+        // 3. Create a function that returns an object of all the different foods from all
+        // the objects as the key and the number of times that food is present in all the
+        // objects as the value.
+        // Example:
+        // { hamburgers: 3,
+        // sausages: 1,
+        // salmon: 3,
+        // pike: 2,
+
+
+        const favoriteFoods = (arr) => {
+            const obj = {};
+            arr.forEach((element) => { 
+                element.favoriteFoods.meats.forEach((carne) => {
+                    obj[carne] ? obj[carne] = obj[carne] + 1 : obj[carne] = 1;
+                });
+                element.favoriteFoods.fish.forEach((fishes) => {
+                    obj[fishes] ? obj[fishes] + 1 : obj[fishes] = 1;
+                });
+            });
+            return obj;
+
+        }
+
+        console.log(favoriteFoods(data)); 
+
+    </script>
+
+</body>
+</html>
