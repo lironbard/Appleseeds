@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 13.2</title>
+</head>
+<body>
+
+    <script>
+
+        // 1. Recreate the challenge from the exercise 6.4-
+        // looping_with_arrays ,but this time using a while loop.
+        // 2. Reflect on what solution you like better for this task: the
+        // for loop or the while loop?
+        //sure the while loop is more effective.
+
+        const populations = [20, 30, 40,50];
+        const percentageOfWorld1 = (population) => {
+        return (population / 7900) * 100;
+        };
+        const percentages33 = [];
+        let i = 0;
+        while (i < populations.length) {
+        const res = percentageOfWorld1(populations[i]);
+        percentages33.push(res);
+        i++;
+        }
+        console.log(percentages33);
+
+    </script>
+    
+</body>
+</html>
