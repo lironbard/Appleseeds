@@ -87,20 +87,36 @@
         school.assignStudent = (id, subjects) => {
             const students = school.findPerson("students", 12);
             //console.log(students);
-            const teachers = school.teachers.find((teacher) => {
-                return teacher.subjects.includes("biology");
+            const teacher = school.teachers.find((teacher) => {
+                return teacher.subjects.includes("biology") && teacher.capacityLeft > 0;
                 //console.log(teacher.subjects.includes("biology"));
                 //return teachers.capacityLeft > 0;
-            })
-            console.log(teacher);
+            });
+            if (teacher) {
+                teacher.students.push(students);
+                teacher.capacityLeft --;
+                ////console.log(teacher);
+            } else {
+                console.log("Sorry, no available teachers left");
+            }
+            //console.log(teacher);
         }
 
-        school.assignStudent(11,"biology");
+        //school.assignStudent(2,"biology");
 
         // 3. A method called “assignTeachersSubject” that takes two
         // arguments, the teacher’s id, a new subject.
         // Assign the new subject to that particular teacher if that
         // subject doesn’t exist in their array of subjects
+
+        school.assignTeachersSubject = (id, subjects) => {
+            const teacher = school.findPerson("teachers", id);
+            console.log(teacher);
+            teacher.subjects.push(subjects)
+        }
+
+        school.assignTeachersSubject(1,"C++");
+        console.log(teacher);
 
         // 4. Create a new method of anything you want.
 
