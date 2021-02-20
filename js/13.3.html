@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 13.3</title>
+</head>
+<body>
+
+    <script>
+
+        const food = ["Noodle", "Pasta", "Ice-cream", "Meat","Cucumber", "Olives"];
+        const food1 = ["Fries", "Ice-cream", "Pizza", "Olives","Hamburgers"];
+
+        // You are given two arrays:
+        // Create a function that takes these two arrays as
+        // arguments.
+        // Compare these two arrays using 2 for loops and return the
+        // items that are the same. If none are the same return false.
+
+        const compare = (arr, arr2) => {
+        const res = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr2.length; j++) {
+                if (arr[i] === arr2[j]) {
+                    res.push(arr[i]);
+                }
+            }
+        }
+        return res.length ? res : false;
+        };
+
+        console.log(compare(food, food1));
+
+
+    </script>
+    
+</body>
+</html>
