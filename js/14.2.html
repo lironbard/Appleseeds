@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.2</title>
+</head>
+<body>
+    <script>
+
+        // What is wrong with this code?
+        // 1. First find the line that contains the problem. Write it down.
+        // 27 - findSmalest(52,66, 2);
+        // 2. Which debug method did you use to find the bug?
+        // 3. Explain the bug in your own words.
+        // Typo - smallest / smalest (missing L)
+        // 4. Fix the code and submit it all.
+        //debugger;
+        function findSmallest(a, b, c){
+        if (a < b  && a < c){
+            return a;
+        } else if (c < a && c < b) {
+            return c;
+        } else {
+            return b;
+        }
+        }
+        console.log(findSmallest(52,66, 2)); 
+
+    </script>
+</body>
+</html>
