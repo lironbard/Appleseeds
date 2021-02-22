@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 17.3 Selecting all elements</title>
+</head>
+<body>
+    
+    <div id="myFirstDiv">1</div>
+    <div id="mySecondDiv">2</div>
+    <div id="myThridDiv">3</div>
+    <div id="myFourthDiv">4</div>
+
+
+
+    <script>
+
+        // Somebody selected the elements and stored them into
+        // individual variables like this:
+        const myFirstDiv = document.querySelector("#myFirstDiv");
+        const mySecondDiv = document.querySelector("#mySecondDiv");
+        const myThirdDiv = document.querySelector("#myThirdDiv");
+        const myFourthDiv = document.querySelector("#myFourthDiv");
+
+        // Is there a better way you can store the individual elements
+        // with giving them different names?
+
+        const all = document.querySelectorAll('div');
+        console.log(all);
+
+        //const [theFirstDiv,theSecondDiv,theThirdDiv,theFourthDiv] = [...all];
+        
+        //const elements = new Map();
+
+        // all.forEach((element) => {
+        //     elements.set(element.id, element.innerHTML);
+        // })
+
+        //console.log(all);
+
+        const elements = {};
+            all.forEach((element) => elements[element.id] = element.innerHTML); // Unordered!
+        
+
+
+    </script>
+    
+</body>
+</html>

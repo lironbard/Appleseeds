@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 17.2 - text area</title>
+</head>
+<body>
+    <h1>Exercise 17.2 - text area</h1>
+
+    <form action="#" id="form">
+    <textarea rows="4" cols="50" name="comment" form="form">You must enter at least 100 characters</textarea>
+    <button class="btnSend">Submit</button>
+    <!-- <input type="submit" class="increase"> -->
+    </form>
+    <br>
+    
+
+    <script>
+        // Instructions
+        // Create a webpage that has part of an application process for a job.
+        // This page should have a text area field and a button. Your user must enter at
+        // least 100 characters before clicking the button. If he didn’t, please give him
+        // the appropriate message. (using alert is forbidden)
+
+        const text = document.querySelector('textarea');
+        const btn = document.querySelector('.btnSend');
+
+        function moreThanHundred() {
+            if (text.value.text < 100) {
+                //text.minLength="100"
+                alert("Please enter more than 100 characters!   ")
+            }
+        }
+
+        btn.addEventListener('click',moreThanHundred);
+
+    </script>
+</body>
+</html>
