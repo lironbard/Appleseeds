@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 28 - The DOM</title>
+</head>
+<body>
+
+    <script>
+
+        // Make a div
+        const div = document.createElement('div');
+    
+        // add a class of wrapper to it
+        div.classList.add('wrapper');
+        // put it into the body
+        document.body.appendChild(div);
+        // make an unordered list
+        const ul = `<ul>
+                <li>One</li>
+                <li>Two</li>
+                <li>Three</li>
+            </ul>`;
+        // const ul = document.createElement('ul');
+        // document.body.appendChild(ul);
+        // add three list items with the words "one, two, three" in them// put that list into the above wrapper
+        div.innerHTML = ul;
+        console.log(div);
+        // const ul = document.createElement('li');
+        // ul.appendChild(li1);
+        // create an image
+        const img = document.createElement('img');
+        // set the source to an image
+        img.src = 'https://picsum.photos/500';
+        // set the width to 250
+        img.width = 250;
+        img.height = 250;
+        // add a class of cute
+        img.classList.add("cute");
+        // add an alt of Cute Puppy
+        img.alt = "Cute Picture!";
+        // Append that image to the wrapper
+        div.appendChild(img);
+        // with HTML string, make a div, with two paragraphs inside of it
+        const theHTML = `<div class="myDiv">
+                <p>Paragraph One</p>
+                <p>Paragraph Two</p>
+            </div>`;
+
+        // put this div before the unordered list from above
+            const transferUl = div.querySelector('ul');
+            console.log(transferUl);
+            transferUl.insertAdjacentHTML('beforebegin', theHTML);
+        // add a class to the second paragraph called warning
+        const myDiv = div.querySelector('.myDiv');
+        console.log(myDiv);
+        myDiv.children[1].classList.add("warning");
+        // remove the first paragraph
+            myDiv.firstElementChild.remove();
+        // create a function called generatePlayerCard that takes in three arguments: name, age, and height
+        // have that function return html that looks like this: 
+                // <div class="playerCard">
+        //     <h2>NAME — AGE</h2>
+        //     <p>They are HEIGHT and AGE years old. In Dog years this person would be AGEINDOGYEARS. That would be a tall dog!</p> 
+        // </div>
+
+        function generatePlayerCard(name,age,height){
+            const playerCard = `
+                <div class="playerCard">
+                    <h2>${name} — ${age}</h2>
+                    <p>The height is ${height}cm tall and the age is ${age} years old. In Dog years this person would be ${age * 7}cm. That would be a tall dog!</p> 
+                    <button class="delete" type="button">&times; Delete</button>
+                </div>
+            `
+            return playerCard;
+        }
+
+        // make a new div with a class of cards
+        const cards = document.createElement('div');
+        cards.classList.add("cards");
+        // make 4 player cards using generatePlayerCard
+        let cardsGenerator = generatePlayerCard("nana",22,170);
+        cardsGenerator += generatePlayerCard("baba",33,190);
+        cardsGenerator += generatePlayerCard("blabla",44,200);
+        cardsGenerator += generatePlayerCard("OKOK",55,210);
+        //console.log(cardsGenerator);
+        
+        cards.innerHTML = cardsGenerator;
+        // append those cards to the div
+        div.insertAdjacentElement('beforebegin', cards);
+        // put the div into the DOM just before the wrapper element
+
+        // Bonus, put a delete Button on each card so when you click it, the whole card is removed
+
+        // select all the buttons!
+        const buttons = document.querySelectorAll('.delete');
+        // make out delete function
+        function deleteCard() {
+            const clickedBtn = event.currentTarget;
+            clickedBtn.parentElement.remove();
+            //console.log(event.currentTarget);
+            //console.log('DELETE CARD!');
+        }
+        // loop over them and attach a listener
+        buttons.forEach(button => button.addEventListener('click',deleteCard));
+
+    </script>
+
+    <style>
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4 , 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        .playerCard {
+            background-color: crimson;
+            padding: 20px;
+        }
+
+        .playerCard h2 {
+            color: white;
+        }
+
+        .playerCard p {
+            color: teal;
+        }
+
+    </style>
+    
+</body>
+</html>
