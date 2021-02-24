@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 22.2 - checkbox</title>
+</head>
+<style>
+    div.container {
+        height: 300px;
+        width: 500px;
+        background: crimson;
+    }
+
+    img {
+        background-image: ;
+    }
+
+    
+
+
+</style>
+<body>
+
+    <div class="container">
+        <input type="checkbox" name="agree" id="agree">
+        <label for="agree">I agree to the terms and conditions</label>
+    </div>
+    
+</body>
+<script>
+
+
+        // Create a webpage that has a checkbox. If the checkbox is checked, make a
+        // photo appear. If it is not, make it disappear.
+
+        const checked = document.getElementById('agree');
+        checked.addEventListener('change', (event)=> {
+            if (event.currentTarget.checked){
+                let img = document.createElement('img');
+                img.classList.add("pic")
+                img.src = "https://www.elecspo.com/static/uploads/13/2018/10/ak47bloodsport-1024x576.jpg"
+                document.body.append(img);
+            }
+            if (!event.currentTarget.checked){
+                document.querySelector('.pic').remove();
+            }
+        })
+
+
+
+
+
+
+        // const checkbox = document.querySelector('[name="agree"]');
+
+        // checkbox.addEventListener('submit', (event) => {
+        //     event.preventDefault();
+        //     console.log(event.currentTarget.agree.checked);
+        // })
+
+        
+
+        // checkbox.addEventListener('change', function() {
+        // if (this.checked) {
+        //     console.log("Checkbox is checked..");
+        // } else {
+        //     console.log("Checkbox is not checked..");
+        // }
+        // });
+        // https://www.elecspo.com/static/uploads/13/2018/10/ak47bloodsport-1024x576.jpg
+
+
+</script>
+</html>
