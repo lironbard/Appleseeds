@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 22.1 - Forms</title>
+</head>
+<style>
+    div.container {
+        height: 300px;
+        width: 500px;
+        background: crimson;
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <form name="form" action="#">
+            <h3>user name:</h3>
+            <input type="text" id="username" value="liron">
+            <h3>age:</h3>
+            <input type="text" id="age" value="33">
+            <h3>email:</h3>
+            <input type="text" id="email" value="lala@walla.com">
+            <button id="button">Submit</button>
+        </form>
+    </div>
+    
+</body>
+<script>
+    // Create a webpage that has a form (asks the user for its name, age and email
+    // address) and when the user clicks submit, open a text window that writes all
+    // the information and ask for his confirmation. If he clicks on the confirm
+    // button, tell him “congratulations you successfully sent this form” if he clicks on
+    // change information, give him the possibility to change the information and ask
+    // again for his confirmation.
+
+    //const confirmation = confirm(`username:${input.username} age:${input.age} email:${input.email}`)
+
+    const button = document.querySelector('button');
+     // blackbox
+    const inputName = document.getElementById("username");
+    const inputAge = document.getElementById("age");
+    const inputMail = document.getElementById("email");
+
+    const toChange = button.addEventListener('click',(event) => {
+        confirm(`username:${inputName} age:${inputAge} email:${inputMail}`)
+        });
+        if (toChange) {
+            window.location = event.currentTarget.href;
+        }
+
+        const signup = document.querySelector('[name="form"]');
+
+        signup.addEventListener('submit', (event)=> {
+            alert("congratulations you successfully sent this form");
+        })
+
+    
+</script>
+</html>
