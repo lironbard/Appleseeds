@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 19.1 - DOM walk</title>
+</head>
+<body>
+
+ <ul>
+    <li>title 1</li>
+    <li class="start-here">title 2</li>
+    <li>
+        <ul>
+            <li>sub title 1</li>
+            <li>sub title 2</li>
+            <li>sub title 3</li>
+        </ul>
+    </li>
+    <li>title 3</li>
+ </ul>
+ <div>
+    <p>Hello World!</p>
+</div>
+    
+    <script>
+
+        // Instructions
+        // Please make the following changes to the html file while navigating the DOM.
+        // Create a variable that holds the <li> element with the class “start-here”.
+            const startLI = document.querySelector(".start-here");
+        // Use traverse methods to complete these tasks:
+        // 1. Change the text from “title 2” to “main title”
+        startLI.textContent = "main title";
+        // 2. Add another sub title with the text “sub title 4”
+            const startNextSibling = startLI.nextElementSibling;
+            const startUL = startNextSibling.firstElementChild;
+            const subTitle4 = document.createElement('li');
+            const subTitle4Text = document.createTextNode("sub title 4");
+            subTitle4.appendChild(subTitle4Text);
+            startUL.appendChild(subTitle4);
+            
+            //subTitle4.textContent = "sub title 4";
+
+        // 3. Delete the last <li> element from the list.
+            const liParent = startLI.parentElement;
+            console.log(liParent.lastElementChild);
+            liParent.lastElementChild.remove();
+        // 4. Change the <title> element text to “Master Of The Dom”.
+            const header = document.head;
+            const title =  header.lastElementChild;
+            title.textContent = "Master Of The Dom";
+            console.log(title);
+        // 5. Change the text of the <p> element ot something else of your liking.
+
+            // const para = document.querySelector("div");
+            // para.textContent = "YOYO";
+
+            const div = liParent.nextElementSibling;
+            //div.textContent = "YOYO";
+
+            const para = div.firstElementChild;
+            para.textContent = "YOYO";
+
+
+
+        // Note:
+        // On the next page you have the HTML code
+
+
+
+        // const start = document.querySelector('.liron');
+        // console.log(start);
+
+        // const div = document.createElement('div');
+        // div.className = "start here";
+        // document.body.appendChild(div);
+
+        
+
+        
+    </script>
+
+
+</body>
+</html>
