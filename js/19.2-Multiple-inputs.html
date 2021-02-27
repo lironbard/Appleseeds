@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Text to copy</h3>
+    <h5>123456</h5>
+    <div class="container">
+        <form name="verify">
+            <div class="inputs">
+                <input type="text" name="n1" maxlength="1">
+                <input type="text" name="n2" maxlength="1">
+                <input type="text" name="n3" maxlength="1">
+                <input type="text" name="n4" maxlength="1">
+                <input type="text" name="n5" maxlength="1">
+                <input type="text" name="n6" maxlength="1">
+            </div>
+            <div class="button-container">
+                <input type="submit" value="verify">
+            </div>
+        </form>
+    </div>
+
+
+
+    <script>
+        // Features:
+        // 1. The user is allowed to type the values manually. After
+        // each value is inserted, the next input will be focused.
+            const form = document.querySelector("form[name=verify]");
+            const inputs = document.querySelectorAll(".inputs > input");
+            const submit = document.querySelector("input[type='submit']");
+
+            const inputFunc = (element) => {
+                const input = element.target;
+                if (input.value && input.nextElementSibling){
+                    input.nextElementSibling.focus();
+                }  
+                if (inputs[inputs.length-1].value) {
+                    submit.click(); // the submit button is pressed automatically when the last input has value.
+                }
+            }
+
+            form.addEventListener('input', inputFunc); // listening to an input.
+
+        // 2. The user is allowed to paste the verification code.
+        const inputPaste = (event) => {
+            let paste = event.clipboardData.getData('text'); //123456 saving the copied text
+            //console.log(paste);
+            inputs.forEach((input,index) => {  //iterating on each input field from inputs.
+                //console.log(input);
+                input.value = paste[index] || " "; // מדפיסים בחזרה כל פעם אינפוט אחד לתוך השדות
+            });
+            inputs[paste.length-1].focus();
+        }
+        inputs[0].addEventListener('paste', inputPaste) // listening to a PASTE event.
+        // 3. An extra challenge will be to auto submit the form once
+        // all inputs all populated.
+
+        // Things to thing about:
+        // What happens if the user pastes only 3 digits and there are 6 inputs to fill out.
+    </script>
+</body>
+</html>
