@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 22.3 - Guess my letter</title>
+</head>
+<body>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+        }
+        #answer {
+            text-align: center;
+            border: 1px solid black;
+            height: 20px;
+            width: 20px;
+        }
+        #message.red {
+            color: red;
+        }
+        #message.green {
+            color: green;
+        }
+        #restart {
+            text-align: center;
+        }
+        #restart.hide {
+            display: none;
+        }
+        .bottom {
+            text-align: center;
+        }
+    </style>
+
+    <div class="container">
+        <div class="top">
+            <h1>Guess My Letter</h1>
+            <div id="answer">?</div>
+            <h5 id="message">Guess a key</h5>
+        </div>
+        <div id="restart" class="hide">
+            <h5>Do You Want To Restart?</h5>
+            <button>Yes</button>
+        </div>
+        <div class="bottom">
+            <h3>Keys guessed</h3>
+            <div class="guessed"></div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const messageEl = document.querySelector("#message");
+    const guessedKeys = document.querySelector(".guessed");
+    const answered = document.querySelector("#answer");
+    const restart = document.querySelector("#restart");
+    const buttonRestart = document.querySelector("button");
+
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    console.log("random letter:", randomLetter);
+    const guessedLetters = [];
+
+    document.addEventListener("keydown", (e)=> {
+        if (restart.classList.contains("hide")) {
+
+        
+        const key = e.key;
+        const regExp = /[a-zA-Z]/g;
+        if (!regExp.test(key)) {
+            messageEl.textContent = "Please enter letter ONLY!"
+            return messageEl.classList.add("red");
+        }
+        if (guessedLetters.includes(key)){
+            messageEl.textContent = "Existing key, Please try again";
+            return messageEl.classList.add("red");
+        }
+        if (randomLetter !== key){
+            messageEl.textContent = "Wrong letter, Please try again"; 
+            guessedLetters.push(key);
+            guessedKeys.textContent = guessedLetters;
+            return messageEl.classList.add("red");
+        }
+        if (randomLetter === key){
+            messageEl.textContent = "YEYYY you guessed the Letter!!!!";
+            messageEl.classList.add("green");
+            answered.textContent = randomLetter;
+            restart.classList.remove("hide");
+        }
+    }
+    });
+    const restartFunc = () => {
+        messageEl.textContent = "Guess a letter";
+        messageEl.classList.remove("green");
+        messageEl.classList.remove("red");
+        guessedLetters.splice(0,guessedLetters.length); // deleting all the content inside the array.
+        guessedKeys.textContent = guessedLetters;
+        answered.textContent = "?";
+        restart.classList.add("hide");
+    }
+
+    buttonRestart.addEventListener("click", restartFunc);
+    // Instructions:
+    // Generate a random letter and create the following logic depending
+    // if the user guessed the right letter or not:
+    // User guessed it right
+    // • Display a message that the user was right.
+    // • The message should be in the color green.
+    // • Show the right letter to the user.
+    // • Display a message if he wants to play again with a confirm
+    // button.
+    // • If the user wants to play again reset the DOM as it was in the
+    // beginning
+    // User guessed wrong
+    // • Display a message that the user got it wrong.
+    // • The message should be in the color red.
+    // • Display all the letters the user has guessed
+    // • User cannot type the same letter twice. If the user did so,
+    // display a message that he already guessed the letter.
+    // Constraints
+    // • A user can only guess a valid alphabetical letter. If the user
+    // types a non alphabetical letter, display a message that this is
+    // not allowed.
+    // • When the game is finished, a user cannot guess a letter until
+    // he presses the confirm button to start a new game.
+    // • show guesses
+    // • If letter already guessed message to them
+    // • If letter is not the guess then display a message wrong guess
+    // • If letter is you are correct message and display the righ right
+    // key then show an option to start the game again.
+    // • When asking for a new game, user is not able to enter
+    // anymore keys until he confirms.
+
+
+</script>
+</html>
