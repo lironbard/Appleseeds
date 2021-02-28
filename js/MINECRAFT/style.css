@@ -1,0 +1,28 @@
+.box {
+    width: 2vw;
+    height: 4vh;
+    background: white;
+    display: inline-block;
+    line-height: 0;
+  
+    position: relative;
+    z-index: 0;
+  }
+  .box:hover {
+    opacity: 0.8;
+  }
+  .sky-box {
+    background-color: #76d6ff;
+  }
+  .ground-box {
+    background: url(./images/Horn_Coral_Block_BE1_sandLand.png);
+  }
+  .ground-top-box {
+    background: url(./images/land-grass.png);
+  }
+  .grass-box {
+    background: url(./images/grass-block.png);
+  }
+  .stone-box {
+    background: url(./images/Hopper_texture_JE1_BE1_CanBeRocks.png);
+  }
