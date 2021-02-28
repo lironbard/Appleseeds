@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 26.1 - fundamentals of this</title>
+</head>
+<body>
+    
+    <h1 class="element">OK</h1>
+    <script>
+        // Instructions
+        // Answer the following questions:
+        // Question 1:
+        // In your own words what will this point to and why?(Note
+        // this is the global scope).   
+           console.log(this);  // I think it will point to the window.
+        // Question 2:
+        // a. In your own words what will this point to and why. 
+        // the greet function is invoked like an OBJ element, we need to separate it.
+        // b. How can you fix this code.
+
+        const myObj = {
+         name: "Timmy",
+         greet: () => {
+            console.log(`Hello ${this.name}`);
+            },
+        };
+
+        myObj.greet(this);
+
+
+        // Question 3:
+        // In your own words what will this point to and why?
+        // will get undefined, no return and didn't use the "new" keyword.
+           const myFuncDec = () => {
+           console.log(this);
+           };
+           myFuncDec();
+        // Question 4:
+        // In your own words what will this point to and why? // 
+        // will point to window.
+           const myFuncArrow = () => {
+           console.log(this);
+           };
+           myFuncArrow();
+        // Question 5:
+        // a. In your own words what will this point to and why.
+        // It will not catch anything as the class "element" is not defined on an HTML element + click.
+        // b. How can you fix this code.
+         document.querySelector('h1').addEventListener("click",() => {
+         console.log(this);
+         });
+
+    </script>
+</body>
+</html>
