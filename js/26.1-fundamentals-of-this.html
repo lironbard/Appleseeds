@@ -18,25 +18,26 @@
            console.log(this);  // I think it will point to the window.
         // Question 2:
         // a. In your own words what will this point to and why. 
-        // the greet function is invoked like an OBJ element, we need to separate it.
+        // the arrow function will not work as the arrow will get undefined.
         // b. How can you fix this code.
 
         const myObj = {
          name: "Timmy",
-         greet: () => {
+         greet: function() { // add the "function" instead of arrow func
             console.log(`Hello ${this.name}`);
             },
         };
 
-        myObj.greet(this);
+        myObj.greet();
 
 
         // Question 3:
         // In your own words what will this point to and why?
-        // will get undefined, no return and didn't use the "new" keyword.
-           const myFuncDec = () => {
-           console.log(this);
-           };
+        // window
+        const myFuncDec = function () {
+            console.log(this);
+        };
+
            myFuncDec();
         // Question 4:
         // In your own words what will this point to and why? // 
