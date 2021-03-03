@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 34.1 - Star Wars</title>
+</head>
+<style>
+    .header1{
+        border: 2px solid blue;
+    }
+
+    .table {
+        height: 400px;
+        width: 400px;
+        border: 2px solid crimson; 
+    }
+
+</style>
+<body>
+    
+
+    <script>
+        // We are going to use this star wars api to get information.
+        // We want to get information of 10 characters.
+        // We want the following information:
+        // 1. Name
+        // 2. Height
+        // 3. Hair Color
+        // 4. Planet they came from
+        // 5. Planet population
+        // We want you to create an array of objects that will store all of this
+        // information.
+        let data = [];
+        const getData = async () => {
+            for (let i = 1; i <= 10; i++){
+                const person = await fetch (`https://swapi.dev/api/people/${i}/`);
+                const personJson = await person.json();
+                //console.log(personJson);
+                let planet = await fetch (personJson.homeworld);
+                planet = await planet.json();
+
+                data.push({
+                name: personJson.name,
+                height: personJson.height,
+                hair_color: personJson.hair_color ,
+                planet: {planet_name: planet.name ,population: planet.population} ,
+            });
+            }
+            showPlanets();
+        }
+        
+
+
+        // We want to place it dynamically into the DOM without using any HTML.
+        // Create a table using pure JavaScript and place the information there.
+
+        const toDom = () => {
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>Name</td>
+                <td>Height</td>
+                <td>Hair Color</td>
+                <td>Planet Name</td>
+                <td>Planet Population</td>
+            `;
+            document.querySelector('table').appendChild(tr);
+
+        }
+
+        const showPlanets = () => {
+            let table1 = document.createElement('table');
+            table1.classList.add(".table");
+            let header = document.createElement('h1');
+            header.classList.add(".header1");
+            header.textContent = "Start Wars Planets!"
+
+            document.body.appendChild(header);
+            document.body.appendChild(table1);
+            toDom();
+
+            for (const item of data){
+            table1.innerHTML += `
+                <td>${item.name}</td>
+                <td>${item.height}</td>
+                <td>${item.hair_color}</td>
+                <td>${item.planet.name}</td>
+                <td>${item.planet.population}</td>
+            `
+        };
+
+        }
+
+
+
+
+       getData();
+        //console.log(data);
+        
+    </script>
+</body>
+</html>
