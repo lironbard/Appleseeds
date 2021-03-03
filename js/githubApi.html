@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise GitHub API</title>
+</head>
+<style>
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 200px;
+        border: 2px solid crimson;
+    }
+    .img{
+        height: 80%;
+        width: 30%;
+        border: 2px solid purple;
+    }
+    .userNameText{
+        height: 80%;
+        width: 30%;
+        border: 2px solid blue;
+    }
+    .repos{
+        height: 80%;
+        width: 30%;
+        border: 2px solid orange;
+    }
+</style>
+<body>
+    <h1>Github User Search!</h1>
+    <form action="#" name="form1" id="form1">
+        username : <input type="text" name="username" form="form1" id="inputTxt">
+        <button class="btn" type="submit" form="form1">Search</button>
+    </form>
+    
+    <div class="container">
+        <div class="card">
+            <div class="error"></div>
+            <div class="img"></div>
+            <div class="userNameText"></div>
+            <div class="repos"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const data = [];
+        const names = [];
+
+        const getData = async (inputValue) => {
+            const isName = names.includes(inputValue);
+            if (isName){
+                return errorHandler("User Already Exist");
+            }
+            names.push(inputValue);
+            const user = await fetch (`https://api.github.com/users/${inputValue}`);
+            const userJson = await user.json();
+            if (!user.ok) {
+                return errorHandler(`${userJson.message}`)
+            }
+            console.log(user.ok);
+            
+            
+            data.push({
+                Avatar_image: userJson.avatar_url,
+                Name_of_user: userJson.name ||userJson.login,
+                Number_of_public_repos: userJson.public_repos,
+            })
+            displayHTML(data);
+        }
+
+        const errorHandler = (err) => {
+            document.querySelector(".error").textContent = err;
+        }
+
+        const displayHTML = (user) => {
+
+            console.log(data);
+            const h1 = document.createElement("h1");
+            h1.textContent = `${data[0].Name_of_user}`;
+            document.querySelector(".userNameText").appendChild(h1);
+
+            const pic = document.createElement("img");
+            pic.src = `${data[0].Avatar_image}`;
+            document.querySelector(".img").appendChild(pic);
+            
+
+            const rep = document.createElement("h2");
+            rep.textContent = `${data[0].Number_of_public_repos}`;
+            document.querySelector(".repos").appendChild(rep);
+        }
+
+        document.querySelector("button").addEventListener("click", () => {
+            getData(document.querySelector("#inputTxt").value);
+        });
+
+        
+
+
+                
+        // Lets create a small app that will have an input field. When
+        // you type a user’s name in the input field you will fetch from
+        // the github api that particular users information and display
+        // a card of the users information.
+        // That card should have at least the following:
+
+        // 1. Avatar image
+        // 2. Name of user
+        // 3. Number of public repo’s
+        // When a user clicks on the card it will open a new page to
+        // that users github profile page. 
+
+        // Things to think about:
+        // What will happen if a user types an invalid user name?
+        // What happens if the url is broken?
+        // What happens if a user types the same user name? We
+        // wouldn’t want to have duplicate cards of the same profile.
+
+        // User experience
+        // What will make a better user experience? Things come into
+        // mind:
+        // 1. When a user gets a profile we should empty our input.
+        // 2. We should focus on the input on page load and each
+        // time you get a new profile.
+        // 3. We should able to hit enter to search not just clicking on
+        // the button.
+        // 4. Anything else?
+
+    </script>
+</body>
+</html>
