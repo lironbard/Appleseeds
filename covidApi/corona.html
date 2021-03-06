@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./corona.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="graph"></div>
+        <button id="america" class="america">Americas</button>
+        <button id="asia" class="regionBtn">Asia</button>
+        <button id="europe" class="regionBtn">Europe</button>
+        <button id="africa" class="regionBtn">Africa</button>
+        <button id="oceania" class="regionBtn">Oceania</button>
+        <button id="other" class="regionBtn">Other</button>
+        
+    </div>
+
+    <canvas id="myChart" style="position: relative; height: 40vh; width: 80vw"></canvas>
+    
+    <div id="countriesContainer"></div>
+ 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="./corona.js"></script>
+</html>

@@ -1,0 +1,42 @@
+    /* *{
+        box-sizing: border-box;
+        padding: 0;  
+        margin: 0;
+    }
+    body {
+        background: cornflowerblue;
+    }
+    .container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .graph {
+        position:absolute;
+        border: 2px solid black; 
+        height: 200px;
+        width: 80%;
+        margin: 20px;
+    }
+
+    .countries{
+        margin: 20px;
+        position: relative;
+        height: 200px;
+        width: 80%;
+        border: 2px solid crimson;
+    } */
+
+    #countriesContainer{
+        display: flex;
+        flex-wrap: wrap;
+
+        /* flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        justify-content: center;
+        border: 2px solid red; */
+    }
