@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Memory Game</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container{
+        margin-top: 5%;
+        margin-left: 35%;
+        display: flex;
+        justify-content:space-between;
+        
+        flex-wrap: wrap;
+        height: 60vh;
+        width: 60vw;
+        background-color: cornflowerblue;
+        z-index: -1;
+    }
+
+    .card{
+        background-color: transparent;
+        border: 2px solid crimson;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        transition: transform 0.8s;
+        perspective: 1000px;
+        backface-visibility: hidden ;
+        transform: rotateY(180deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .card.cardFlipped{
+        border: 2px solid crimson; 
+        transform: rotateY(0deg);
+    }
+
+    .backCard{
+        background: lightblue;
+        height: 100%;
+        width: 100%;  
+        transform: rotateY(0deg);
+        transition: transform 0.8s;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .backCard.cardFlipped{
+        border: 2px solid crimson; 
+        transform: rotateY(-180deg);
+    }
+
+    .wrapperClass{
+        position: relative;
+        background-color: transparent;
+        height: 32%;
+        width: 24%;
+        z-index: 1;
+        perspective: 1000px;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+</style>
+<body>
+    <h1>Memory Game</h1>
+    <div class="container"></div>
+
+    <script>
+        //ALT + ARROW
+        // ------ Inserting 6 Random Colors To An Array ------\\
+        const colorGenerator = () => {
+           return ("rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")");
+        }
+
+        //colorGenerator();
+        // const card = document.createElement("div");
+        // const card2 = document.createElement("div");
+
+
+        const cardArr = [];
+        const color_array = [];
+        const testCards = [];
+
+
+        const colorToArray = () => {
+            for (let i = 0; i < 6; i++){
+                color_array.push(colorGenerator());
+            }
+        }
+        colorToArray(); // Inserting colors to the color_array
+        console.log(color_array);
+
+
+        // //-----Flipping the Card ------\\
+
+        // const flip = () => {
+        //     if (!state.lastClicked) {
+        //         target.style.backgroundColor = target.dataset.randomColor;
+        //         //transform.rotate
+        //     }
+        // // }
+        
+        
+        //-----Setting Up The Card To The Container------\\
+        const cards = () => {
+            const card = document.createElement("div");
+            const backCard = document.createElement("div");
+            const cardWrapper = document.createElement("div");
+            cardWrapper.classList.add("wrapperClass");
+            cardWrapper.appendChild(card)
+            cardWrapper.appendChild(backCard);
+            backCard.classList.add("backCard");
+            card.classList.add("card");
+            cardWrapper.addEventListener("click", (event) => {
+                const cardTarget = event.target; 
+                cardTarget.classList.add("cardFlipped");
+                cardTarget.previousElementSibling.classList.add("cardFlipped");
+                testCards.push(card);
+                
+                if (testCards.length === 2){
+                    match();
+                }
+            })
+            let colorCurrent = colorGenerator();
+            card.setAttribute("style",`background: ${colorCurrent}`)
+            card.textContent = "1";
+            
+            const card2 = document.createElement("div");
+            const backCard2 = document.createElement("div");
+            const cardWrapper2 = document.createElement("div");
+            cardWrapper2.classList.add("wrapperClass");
+            cardWrapper2.appendChild(card2);
+            cardWrapper2.appendChild(backCard2);
+            backCard2.classList.add("backCard");
+            card2.classList.add("card");
+            cardWrapper2.addEventListener("click", (event) => {
+                const cardTarget = event.target; 
+                cardTarget.classList.add("cardFlipped");
+                cardTarget.previousElementSibling.classList.add("cardFlipped");
+                testCards.push(card2);
+
+                if (testCards.length === 2){
+                    match();
+                }
+            })
+            card2.setAttribute("style",`background: ${colorCurrent}`)
+            card2.textContent = "2";
+            cardArr.push(cardWrapper);
+            cardArr.push(cardWrapper2);
+
+        };
+
+        const match = () => {
+            const check1 = window.getComputedStyle(testCards[0]).backgroundColor;
+            const check2 = window.getComputedStyle(testCards[1]).backgroundColor;
+            console.log("adsasd");
+            if(check1 === check2){
+                testCards.pop();
+                testCards.pop();
+                const x = document.querySelectorAll(".backCard.cardFlipped").length;
+                if (x ===  cardArr.length) {
+                    setTimeout(() => {
+                        alert("You Won!");
+                    },800) ;
+                }
+                
+            } else {
+                setTimeout(() => {
+                testCards[0].classList.remove("cardFlipped"); 
+                testCards[0].nextElementSibling.classList.remove("cardFlipped"); 
+                testCards[1].classList.remove("cardFlipped"); 
+                testCards[1].nextElementSibling.classList.remove("cardFlipped");
+                testCards.pop();
+                testCards.pop();
+                },1000)
+            }
+        }
+
+
+
+        console.log(cardArr);
+
+        const cardsBoardMaking = () => {
+            for (let i = 0; i < 6; i++){
+                cards(); //Making 6 pairs of cards
+            }
+        }
+
+        cardsBoardMaking();
+       
+
+            //----Cards Random Shuffle-----\\
+            const shuffle = (arr) => {
+            for (let i = arr.length - 1; i > 0; i--){
+                var j =Math.floor(Math.random() * (i + 1));
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                document.querySelector(".container").appendChild(arr[i]);
+                document.querySelector(".container").appendChild(arr[j]);
+            }
+            return arr;
+        }
+
+        shuffle(cardArr);
+
+
+        //shuffle();
+
+
+
+        //         //-----Setting Up The Card To The Container------\\
+        //         const cards = () => {
+        //     let card = document.createElement("div");
+        //     card.classList.add("card");
+        //     document.querySelector(".container").appendChild(card);
+        //     card.dataset.randomColor = value;
+        //     card.addEventListener("click", (card) => {
+        //         flip(card.target);
+        //     })
+        //     let card2 = document.createElement("div");
+        //     card2.classList.add("card");
+        //     document.querySelector(".container").appendChild(card2);
+        //     card2.dataset.randomColor = value;
+        //     card2.addEventListener("click", (card2) => {
+        //         flip(card2.target);
+        //     })
+
+             
+        // };
+
+        // const showPlanets = () => {
+        //     let table1 = document.createElement('table');
+        //     table1.classList.add(".table");
+        //     let header = document.createElement('h1');
+        //     header.classList.add(".header1");
+        //     header.textContent = "Start Wars Planets!"
+
+        //     document.body.appendChild(header);
+        //     document.body.appendChild(table1);
+
+
+
+    // var memory_array = ['A','A','B','B','C', 'C', 'D','D','E','E','F','F','G','G','H','H','I','I', 'J','J','K','K','L','L'];
+    // var memory_values = [];
+    // var memory_tile_ids = [];
+    // var tiles_flipped = 0;
+    
+    // Array.prototype.memory_tile_shuffle = function(){
+    //   var i = this.length, j, temp;
+      
+    //   while(--i > 0) {
+    //     j = Math.floor(Math.random() * (i+1));
+    //     temp = this[j];
+    //     this[j] = this[i];
+    //     this[i] = temp;
+    //   }
+    // }
+    
+    // function newBoard(){
+    //   tiles_flipped = 0;
+    //   var output = '';
+    //   memory_array.memory_tile_shuffle();
+    //   for (var i=0; i< memory_array.length; i++){
+    //     output += '<div id="tile_'+i+'" onClick="memoryFlipTiles(this,\''+memory_array[i]+'\')"></div>';
+    //   }
+    //   document.getElementById('memory_board').innerHTML = output;
+    // }
+    
+    // function memoryFlipTiles(tile, val) {
+    //   if (tile.innerHTML == "" && memory_values.length < 2){
+    //     tile.style.background = "#FFF";
+    //     tile.innerHTML = val;
+        
+    //     if(memory_values.length == 0) {
+    //       memory_values.push(val);
+    //       memory_tile_ids.push(tile.id);
+    //     } else if (memory_values.length == 1) {
+    //       memory_values.push(val);
+    //       memory_tile_ids.push(tile.id);
+    //       if (memory_values[0] == memory_values[1]) {
+    //         tiles_flipped +=2;
+    //         //clear arrays
+    //          memory_values = [];
+    //          memory_tile_ids = [];
+            
+    //          if(tiles_flipped == memory_array.length){
+    //             alert("Board cleared");
+    //             document.getElementById('memory_board').innerHTML = "";
+    //             newBoard();
+    //           }
+    //       } else {
+    //         function flip2back(){
+    //           // Flip the 2 tiles back
+    //           var tile_1 = document.getElementById(memory_tile_ids[0]);
+    //           var tile_2 = document.getElementById(memory_tile_ids[1]);
+              
+    //           tile_1.style.background = 'lightsteelblue';
+    //           tile_1.innerHTML = "";
+              
+    //           tile_2.style.background = 'lightsteelblue';
+    //           tile_2.innerHTML = "";
+              
+    //           //clear arrays
+    //          memory_values = [];
+    //          memory_tile_ids = [];
+    //         }
+    //         setTimeout(flip2back, 500);
+    //       }
+    //     }
+    //   }
+    // }
+    </script>
+</body>
+</html>
