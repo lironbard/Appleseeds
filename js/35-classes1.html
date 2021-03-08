@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Classes 1</title>
+</head>
+<body>
+
+    
+    
+
+    <script>
+// 1 .מחלקה כתוב Animal , חיה מייצגת המחלקה כלשהי.
+// הבאים המחלקה משתני את יהיו למחלקה :
+// - name - החיה שם
+// - sound החיה קול
+// 2 .משמיעה שהיא הקול ואת החיה שם את המקבל בנאי צור
+// 3 .במחלקה פעולה צור getName החיה שם את המחזירה
+// 4 .במחלקה פעולה צור getSound החיה קול את המחזירה
+// 5 .פעולה צור print החיה נתוני את המדפיסה
+// 6 .צור 3 שונות חיות
+
+    class Animal {
+        constructor(name,sound){
+            this.name = name;
+            this.sound = sound;
+        }
+
+        getName(){
+            return this.name;
+        }
+
+        getSound(){
+            return this.sound;
+        }
+    }
+
+    const print = new Animal("Cow","Mooooo");
+    console.log(print);
+    const print2 = new Animal("Dog","Wuuufff");
+    console.log(print2);
+    const print3 = new Animal("Fish","Blublublu");
+    console.log(print3);
+
+
+
+    </script>
+</body>
+</html>
