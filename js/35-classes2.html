@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Classes 2</title>
+</head>
+<body>
+
+
+<script>
+
+// מחלקה car רכב המייצגת , הבאים המחלקה משתני את יהיו למחלקה :
+// 1 .כתוב
+// - brand - הרכב חברת
+// - speed - הרכב מהירות
+// 2 .הרכב מהירות ואת הרכב חברת את המקבל בנאי צור .
+// 3 .פעולה צור get ממשתני אחד לכל המחלקה.
+// 4 .פעולה צור print הרכב נתוני את המדפיסה
+// s רכב מהירות המקבלת speed של המהירות את ומעדכנת חדשה הרכב.
+// 5 .פעולה צור etSpeed
+// 6 .אליו והכנס חיצוני מערך צור 4 רכבים סוגי שונים.
+// 7 .הגבוהה המהירות עם הרכב נתוני את המערך מתוך הדפס ביותר.
+// מסעיף המערך את 5 שמסודרים הרכבים כל של חדש מערך ומחזירה
+// 8 .המקבלת חיצונית פעולה בנה
+// הגבוהה עד ביותר הנמוכה מהמהירות ביותר.
+
+    const carArr = [];
+
+    class Car{
+        constructor(brand,speed){
+            this.brand = brand;
+            this.speed = speed;
+        }
+
+        getBrand(){
+            return this.brand;
+        }
+
+        getSpeed(){
+            return this.speed;
+        }
+
+        setSpeed(newSpeed){
+            this.speed = newSpeed;
+        }
+    }
+
+    const newCar = new Car("Mercedes","200");
+    console.log(newCar);
+    const x = new Car("Mercedes");
+    x.setSpeed("400");
+    console.log(x);
+
+    carArr.push(new Car("Mercedes","200"));
+    carArr.push(new Car("BMW","250"));
+    carArr.push(new Car("F1","400"));
+    carArr.push(new Car("Bugatti","800"));
+    console.log(carArr);
+
+
+
+    const max = carArr.reduce((max,car) => {
+        return max.speed > car.speed ? max : car;
+    },0);
+
+    console.log(max);
+   
+    //---8----\\
+
+    let newOrder = carArr.sort((a,b) => {
+        return a.speed - b.speed;
+    });
+
+    console.log(newOrder);
+
+
+    // carArr.sort((element) => {
+    //     if (car.speed === max) {
+    //         console.log(element);
+    //     }
+    // });
+
+    
+
+    // for (let i = 0; i < carArr.length; i++){
+    //     console.log(carArr.speed);
+    //     let temp = 0;
+    //     if (carArr[i].speed > carArr[i+1].speed || 0){
+    //         temp = carArr[i];
+    //     }     
+    // }
+
+        // carArr.sort((element) => {
+    //     temp = 0;
+    //     if (element > temp){
+    //         temp = element;
+    //     }
+    //     console.log(temp);
+    // })
+
+    // const max = carArr.reduce((acc,car) => {
+    //     return car.v > acc ? car.v : acc;
+    // },0);
+
+    
+    
+</script>
+    
+</body>
+</html>
