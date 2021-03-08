@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Classes 3</title>
+</head>
+<body>
+    
+
+    <script>
+// 1 .כתוב מחלקה sortNumber , המחלקה מייצגת מערך של מספרים ראשוניים ,
+// המערך יהיה בסדר עולה מהמספר הראשוני הקטן ביותר ועד לגדול ביותר ,
+// אין כפלויות של מספרים במערך.
+// למחלקה יהיו את משתני המחלקה הבאים :
+// - numList - מערך של מספרים ראשוניים
+// 2 .צור בנאי ריק המיצר מערך ריק של המספרים.
+// 3 .צור פעולה addNum המקבלת num ומכניסה אותו למערך , יש להחזיר true במידה והמספר הוכנס
+// למערך , אחרת יש להחזיר false.
+// 4 .צור פעולה removeNum המקבלת num ומוציאה את המספר מהמערך במידה וקיים , יש להחזיר
+// true במידה והמספר הוצא מהמערך , אחרת יש להחזיר false.
+// 5 .צור פעולה getAll המחזירה את המערך.
+// 6 .צור פעולה print המדפיסה את כל המערך.
+// 7 .צור מופע מהמחלקה sortNumber והכנס אליו 4 מספרים.
+// 8 .צור מופע נוסף מהמחלקה sortNumber והכנס אליו לפחות 2 מספרים
+// 9 .צור פעולה share במחלקה sortNumber המקבלת עצם מסוג sortNumber ומחזירה כמה מספרים
+// משותפים יש לו עם העצם הנוכחי
+// 10 .צור פעולה share במחלקה sortNumber המקבלת עצם מסוג sortNumber ומחזירה כמה מספרים
+// משותפים יש לו עם העצם הנוכחי
+// 11 .צור פעולה union במחלקה sortNumber המקבלת עצם מסוג sortNumber ומחזירה מערך חדש עם
+// כל המספרים של העצם sortNumber והעצם הנוכחי בלי כפל מספרים.
+
+        
+            const isPrime = num => {
+                if (num == 0 || num ==1){
+                    return true;
+                }
+            for(let i = 2; i < num; i++)
+                if(num % i === 0) return false;
+                        return num > 1;
+            }
+
+        class sortNumber{
+            constructor(){
+                this.arr = []; // לא יכול כפילויות ומספרים ראשוניים.
+            }
+
+            addNum(num) {
+                if (!this.arr.includes(num) && isPrime(num)){
+                    this.arr.push(num);
+
+                    this.arr.sort((a,b) => {
+                    return (a-b); // pos will return a.
+                });
+                return true;
+                }
+                return false;
+            };
+            
+            share(sortNumber){
+                let count = 0;
+                //console.log(this);
+                //console.log(sortNumber.arr);
+                for (let i = 0; i < this.arr.length; i++){
+                    for (let k = 0; k < sortNumber.arr.length; k++){
+                        if (this.arr[i] === sortNumber.arr[k]){
+                            count++
+                        }
+                    }
+                }
+                return count
+            }
+
+            union(sortNumber){
+            return [...new Set([...sortNumber.arr, ...this.arr])]
+            }
+
+            
+
+        }
+
+    
+
+        const x = new sortNumber();
+        x.addNum(1);
+        x.addNum(2);
+        x.addNum(3);
+        x.addNum(7);
+
+        //console.log(x.arr);
+
+        const y = new sortNumber();
+        y.addNum(3);
+        y.addNum(11);
+        y.addNum(7);
+        y.addNum(1);
+
+        //console.log(y.arr);
+
+
+        /// ----9----\\\
+        x.share(y);
+        console.log(x.share(y));
+
+        /// ----10----\\\
+        // union(sortNumber){
+        //     let newArr = [...this.arr];
+            
+        // }
+
+
+        const final = x.union(y);
+        final.sort((a,b)=> {
+            return a-b;
+        })
+        console.log(final);
+        //console.log(sorting(x.union(y)));  
+        //console.log(newArr);
+
+        
+
+
+
+
+    </script>
+</body>
+</html>
