@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Node To Do App</title>
+</head>
+<body>
+    
+
+    <script>
+
+
+        // Instructions
+        // Lets create a simple todo app with no UI.
+        // Create an empty array which you will add your todo items.
+        // Create simple functions that will do the following:
+        // * Add item (id, task name, isCompleted)
+        // * Delete item
+        // * Mark as done
+        // * Unmark as done
+        // * List – returns all the items with their status. Done items
+        // should be at the bottom of the list.
+        // We will learn about testing tomorrow and test these
+        // functions out
+
+        const arr = [];
+
+        addFunction = (id, task_name, isCompleted) => {
+            arr.push(id, task_name, isCompleted)
+        }
+
+        deleteFunction = (item) => {
+            item.shift();
+        }
+
+        markAsDone = (item) => {
+            item.isCompleted = true;
+        }
+
+        UnMarkAsDone = (item) => {
+            item.isCompleted = false;
+        }
+
+        listFunction = () => {
+            arr.forEach((element) => {
+                return element.id;
+            })
+        }
+
+    </script>
+</body>
+</html>
