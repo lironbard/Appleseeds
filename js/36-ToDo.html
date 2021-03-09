@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 36 To Do App</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>To Do App!</h1>
+        <h2>Create Task</h2>
+        <form id="createForm" action="#">
+            Task ID: <input type="number" name="id" id="id"><br>
+            Task Name: <input type="text" name="taskName" id="name"><br>
+            Task Completion: <input type="checkbox" name="completion" id="completion"><br>
+            Task Priority: <input type="checkbox" name="taskPriority" id="taskPriority"><br><br>
+            <input type="button" value="Submit Task" id="createSubmit">
+          </form>
+
+          <h2>Update Task</h2>
+          <form id="updateForm" action="#">
+            Task ID Update: <input type="number" name="updateId" id="updateId"><br>
+            Task Name Update: <input type="text" name="updateTaskName" id="updateTaskName"><br>
+            Task Completion Update: <input type="checkbox" name="updateCompletion" id="updateCompletion"><br>
+            Task Priority Update: <input type="checkbox" name="updateTaskPriority" id="updateTaskPriority"><br><br>
+            <input type="button" value="Update Task" class="btn">
+          </form>
+    </div>
+    
+
+    <script>
+        const taskArr = [];
+        const container = document.querySelector(".container");
+        const idInput = document.querySelector("#id");
+        const nameInput = document.querySelector("#name");
+        const completion = document.querySelector("#completion");
+        const priority = document.querySelector("#taskPriority");
+
+        const idInputUpdate = document.querySelector("#updateId");
+        const nameInputUpdate = document.querySelector("#updateTaskName");
+        const completionUpdate = document.querySelector("#updateCompletion");
+        const priorityUpdate = document.querySelector("#updateTaskPriority");
+
+        const createSubmit = document.querySelector("#createSubmit");
+
+        const updateTaskBtn = document.querySelector(".btn");
+        // updateTaskBtn.addEventListener("click", ()=>{
+        // document.getElementById("updateForm").submit();
+        // })
+
+
+        //----Functions----\\
+
+        //read
+            const renderData = () => {
+                container.innerHTML = "";
+                taskArr.forEach((task,index) => {
+                    const idEl = document.createElement("h2");
+                    idEl.textContent = task.id;
+                    container.appendChild(idEl);
+
+                    const task_nameEl = document.createElement("h2");
+                    task_nameEl.textContent = task.task_name;
+                    container.appendChild(task_nameEl);
+
+                    //id, task_name, isCompleted, priority
+                })
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.innerText = "Delete";
+                deleteBtn.addEventListener("click", () => deleteData(index));
+                container.appendChild(deleteBtn);
+
+                const updateBtn = document.createElement("button");
+                updateBtn.innerText = "Update";
+                updateBtn.addEventListener("click", () => {
+                    idInputUpdate.focus();
+                    idInputUpdate.value = task.id;
+                    nameInputUpdate.focus();
+                    nameInputUpdate = task.id;
+                    updateTaskBtn.setAttribute("data-id",index);
+                    // completionUpdate.focus();
+                    // completionUpdate = task.id;
+                    // priorityUpdate .focus();
+                    // priorityUpdate = task.id;
+                });
+                container.appendChild(updateBtn);
+
+                const newTaskBtn = document.querySelector("button");
+                newTaskBtn.addEventListener("click", createData);
+            }
+
+            
+        //create
+        createData = () => {
+            const createId = idInput.value;
+            const createName = nameInput.value;
+            const createName = nameInput.value;
+            const createCompletion = completion.value;
+            const createPriority = priority.value;
+            taskArr.push({createId,createName,createName,createCompletion,createPriority});
+
+            renderData();
+        }
+
+        //update
+        updateData = ()=> {
+            const index = updateTaskBtn.getAttribute("data-id");
+            if (index){
+                const id = idInput.value;
+                const name = nameInputUpdate.value;
+                // what with the checkboxes?
+                taskArr.splice(index,1,{id,name})
+                idInput.value = "";
+                nameInputUpdate.value = "";
+                renderData();
+                
+            }
+            console.log(index);
+
+        // idInputUpdate
+        // nameInputUpdate
+        // completionUpdate
+        // priorityUpdate 
+
+        }
+        //delete
+        deleteData = (index) => {
+            taskArr.splice(index,1);
+            renderData();
+        }
+
+        renderData();
+
+        createSubmit.addEventListener("click", createData);
+        updateTaskBtn.addEventListener("click", updateData);
+        
+
+
+
+
+
+
+                const checkedCompletion = document.getElementById('completion');
+                checked.addEventListener('change', (event)=> {
+                    if (event.currentTarget.checked){
+                        task_item.isCompleted = true;
+                    }
+                    if (!event.currentTarget.checked){
+                        task_item.isCompleted = false;
+                    }
+                })
+
+                const checkedCompletion2 = document.getElementById('taskPriority');
+                checked.addEventListener('change', (event)=> {
+                    if (event.currentTarget.checked){
+                        task_item.important_or_not = true;
+                    }
+                    if (!event.currentTarget.checked){
+                        task_item.important_or_not = false;
+                    }
+               
+        
+
+   
+        
+
+        
+        const arr = [];
+
+        addFunction = (id, task_name, isCompleted, priority) => {
+            task_item = {
+                id: id,
+                task_name: task_name,
+                isCompleted: isCompleted,
+                important_or_not: priority,
+                creation_date: new Date(),
+            }
+            arr.push(task_item);
+        }
+
+        deleteFunction = (item) => {
+            item.shift();
+        }
+
+        markAsDone = (item) => {
+            item.isCompleted = true;
+        }
+
+        UnMarkAsDone = (item) => {
+            item.isCompleted = false;
+        }
+
+        listFunction = () => {
+            arr.forEach((element) => {
+                return element.id;
+            })
+        }
+
+        // Let’s create a classic CRUD application.
+        // We will create a TODO app but this code you can take along
+        // to any application the leverages CRUD. Including in React.
+        // So it is very important that you master this. Do not copy a
+        // todo app online. You will only be cheating yourself.
+        // CRUD
+        // 1) Ability for the user to create a todo item.
+        // 2) Ability to display the todo items.
+        // 3) Ability to update a specific todo item
+        // 4) Ability to delete a todo item (todo item completed)
+        // Features
+        // 1) Each todo item will show the specific date it was created
+        // 2) Prioritize the importance of each todo item.
+        // 3) Able to sort your todo items (completed to not
+        // completed, importance to not important, newest todo to
+        // oldest todo etc)
+        // 3) Any other cool features are welcomed! Get creative! For
+        // example add todo categories.
+        // Make it look nice so you can proudly display this in your
+        // github. This is a classic project to display your CRUD skills
+        // as a JavaScript developer.
+        // Problem
+        // We have a problem that we cannot persist our todo items.
+        // The minute we refresh the page all the data is erased.
+        // Learn about local storage and implement it to your app. So
+        // that when you refresh your browser, the data is persistant
+    </script>
+</body>
+</html>
