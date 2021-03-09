@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Classes 5</title></head>
+<body>
+
+
+    <script>
+
+        class Room{
+            constructor(room_id,level,amount){
+                this.room_id = room_id;
+                this.level = level;
+                this.amount = amount;
+                this.isFree = true;
+            }
+
+            vacancy(amount){
+                if (this.amount >= amount && this.isFree){
+                    this.isFree = false;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            print(){
+                console.log(`ID: ${this.room_id}, Level: ${this.level}, Amount: ${this.amount}, Free?: ${this.isFree}`);
+            }
+        }
+
+        const room1 = new Room(1234,200,15);
+        room1.vacancy(7);
+        //console.log(room1.vacancy(20));
+        room1.print();
+
+
+        class Hotel{
+            constructor(room){
+                this.roomArr = [room];
+            }
+
+            addRoom(room){
+                const roomCheck = this.roomArr.find((el) => {
+                    return el.room_id === room.room_id
+                }) 
+                if (!roomCheck){
+                    this.roomArr.push(room);
+                    return true;
+                }
+                return false;
+            }
+
+            addNewRoom(room_id,level,amount){
+                const roomCheck = this.roomArr.find((el) => {
+                    return el.room_id === room_id
+                })
+                if(!roomCheck){
+                    const room1 = new Room(room_id,level,amount);
+                    this.roomArr.push(room1);
+                    return true;
+                }
+                return false;
+            }
+
+            removeRoom(room_id){
+
+            }
+        }
+
+        const theHotel = new Hotel(room1);
+        console.log(theHotel);
+        theHotel.addRoom(room1);
+        theHotel.addRoom(room1);
+        const room2 = new Room(4441234,300,10);
+        theHotel.addRoom(room2);
+        theHotel.addNewRoom(12,2,2);
+        console.log(theHotel);
+        theHotel.addNewRoom(12,2,2);
+        console.log(theHotel);
+
+
+
+        
+
+
+    </script>
+    
+</body>
+</html>

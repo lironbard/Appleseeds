@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Classes 4</title>
+  </head>
+  <body>
+    <script>
+            class Point {
+                constructor(x,y){
+                    this.x = x;
+                    this.y = y;
+                }
+
+              getX(){
+              return this.x;
+              }
+
+              getY(){
+                  return this.y;
+              }
+
+              addToX(x){
+                  this.x += x;
+              }
+
+              addToY(y){
+                  this.y += y;
+              }
+
+              setX(newX){
+                  this.x = newX;
+              }
+
+              setY(newY){
+                  this.y = newY;
+              }
+
+
+
+              addPoint(point){
+                  this.x += point.x;
+                  this.y += point.y;
+              }
+
+              isSame(point){
+                  if (this.x === point.x && this.x === point.x){
+                      return true;
+                  } else {
+                      return false;
+                  }
+              }
+
+              print(point){
+                  console.log(this.x);
+                  console.log(this.x);
+              }
+
+      }
+
+
+            const thePoint = new Point(1,2);
+            //console.log(thePoint);
+
+
+            class PointWorld{
+                constructor(){
+                    this.listArr = [];
+                }
+
+                sortArr(listArr) {
+                    this.listArr.sort((a,b) => {
+                    return a.y - b.y;
+                    });
+                }
+
+                noDouble(listArr) {
+                    this.listArr.forEach((element)=> {
+                        if (this.listArr.includes(element)){
+                        this.listArr.shift(element);
+                        }
+                    })
+                };
+
+                allX(){
+                    console.log(this.listArr);
+                    return this.listArr.reduce((totalX,element)=>{
+                        return totalX + element.x;
+                    },0);
+                }  
+            }
+          
+          const point1 = new Point(1,2);
+          const point2 = new Point(3,4);
+          const points = new PointWorld();
+          points.listArr.push(point1);
+          points.listArr.push(point2);
+          console.log(points.allX());
+          
+    </script>
+  </body>
+</html>
