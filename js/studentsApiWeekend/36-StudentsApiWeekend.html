@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 10px;
+    }
+    .container {
+    }
+
+    .header {
+    }
+
+    .table {
+      display: grid;
+      grid-template-columns: repeat(9, max-content);
+    }
+
+    .tableHeader {
+      position: sticky;
+    }
+
+    .cell {
+      padding: 3px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <body>
+    <main class="screen">
+      <input type="text" id="inputSearch" class="inputSearch" />
+      <select name="category" id="category">
+        <option value="id">id</option>
+        <option value="firstName">firstName</option>
+        <option value="lastName">lastName</option>
+        <option value="capsule">capsule</option>
+        <option value="age">age</option>
+        <option value="city">city</option>
+        <option value="gender">gender</option>
+        <option value="hobby">hobby</option>
+      </select>
+      <header class="header"><h1>Bootcamp Class Of Heroes</h1></header>
+      <div class="container">
+        <div class="table">
+          <div class="tableHeader cell" data-row="1">Id</div>
+          <div class="tableHeader cell" data-row="1">First Name</div>
+          <div class="tableHeader cell" data-row="1">Last Name</div>
+          <div class="tableHeader cell" data-row="1">Capsule</div>
+          <div class="tableHeader cell" data-row="1">Age</div>
+          <div class="tableHeader cell" data-row="1">City</div>
+          <div class="tableHeader cell" data-row="1">Gender</div>
+          <div class="tableHeader cell" data-row="1">Hobby</div>
+          <div class="tableHeader cell" data-row="1"></div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      async function main() {
+        await students();
+        console.log(dataArr);
+        rowGenerate();
+      }
+
+      //-----Getting The Data-----\\
+      const dataArr = [];
+      // Get all users information:
+      const urlStudents = `https://apple-seeds.herokuapp.com/api/users/`;
+      const students = async () => {
+        const studentsResp = await fetch(urlStudents);
+        const studentsJson = await studentsResp.json();
+        //console.log(studentsJson);
+        const listOfExtra = [];
+        for (let i = 0; i < 32; i++) {
+          const singleExtra = {};
+          const extraResp = await fetch(urlStudents + i);
+          const extraJson = await extraResp.json();
+          // console.log(extraJson);
+          // console.log(studentsJson[i]);
+          //studentsJson[i].id = extraJson.id;
+          studentsJson[i].age = extraJson.age;
+          studentsJson[i].city = extraJson.city;
+          studentsJson[i].gender = extraJson.gender;
+          studentsJson[i].hobby = extraJson.hobby;
+          //console.log(studentsJson[i]);
+          dataArr.push(studentsJson[i]);
+        }
+      };
+
+      async function print() {
+        console.log(await students());
+      }
+
+      //print();
+
+      //grid auto row, hight - dynamically.  all the table at once, not container and rows.
+      main();
+
+      function rowGenerate() {
+        const table = document.querySelector(".table");
+        dataArr.forEach((student) => {
+          //---------------===-----------------\\
+          const runArr = [
+            "id",
+            "firstName",
+            "lastName",
+            "capsule",
+            "age",
+            "city",
+            "gender",
+            "hobby",
+          ];
+
+          runArr.forEach((column) => {
+            const element = document.createElement("div");
+            element.classList.add("cell");
+            //element.setAttribute("contenteditable", true);
+            element.dataset.id = student.id;
+            element.textContent = student[column];
+            table.appendChild(element);
+          });
+
+          const element = document.createElement("div");
+          element.classList.add("cell");
+          element.dataset.id = student.id;
+          element.innerHTML = `<button data-id=${student.id} class="btn editBtn">Edit</button> <button data-id=${student.id} class="btn delBtn">Delete</button>`;
+          table.appendChild(element);
+        });
+
+        const delBtn = document.querySelectorAll(".delBtn");
+        delBtn.forEach((button) =>
+          button.addEventListener("click", deleteFunc)
+        );
+      }
+
+      const search = (event) => {
+        const searchTerm = event.target.value;
+        const searchDropPick = searchDrop.value;
+
+        dataArr.forEach((student) => {
+          const row = document.querySelectorAll(`[data-id="${student.id}"]`);
+          if (
+            String(student[searchDropPick])
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())
+          ) {
+            row.forEach((cell) => {
+              cell.classList.remove("hidden");
+            });
+          } else {
+            row.forEach((cell) => {
+              cell.classList.add("hidden");
+            });
+          }
+        });
+      };
+
+      const input = document.querySelector("#inputSearch");
+      input.addEventListener("input", search);
+
+      const searchDrop = document.querySelector("#category");
+      searchDrop.addEventListener("change", () => {
+        input.value = "";
+        dataArr.forEach((student) => {
+          const row = document.querySelectorAll(`[data-id="${student.id}"]`);
+          row.forEach((cell) => {
+            cell.classList.remove("hidden");
+          });
+        });
+      });
+
+      const deleteFunc = (e) => {
+          const row = document.querySelectorAll(`[data-id="${e.target.getAttribute("data-id")}"]`);
+          row.forEach((element)=>{
+             element.remove();
+        });
+          //console.log(row);
+    }
+      
+    const edit = () => {
+
+    }
+    
+
+      // //---------------===-----------------\\
+      //     const id = document.createElement("div");
+      //     id.classList.add("cell");
+      //     id.dataset.id = student.id;
+      //     id.textContent = student.id;
+      //     table.appendChild(id);
+      // //--------------------------------\\
+      //     const firstName = document.createElement("div");
+      //     firstName.classList.add("cell");
+      //     firstName.dataset.id = student.id;
+      //     firstName.textContent = student.firstName;
+      //     table.appendChild(firstName);
+
+      //    const saveBtn = document.querySelector(".save");
+      //    const deleteBtn = document.querySelector(".deleteAll");
+      //    const toggleMenu = document.querySelector(".toggle");
+      //    const searchArea = document.querySelector(".search");
+
+      //    const tableMaking = () => {
+      //        const row = document.createElement("div")
+      //        row.classList.add("cell");
+      //}
+
+    </script>
+  </body>
+</html>
