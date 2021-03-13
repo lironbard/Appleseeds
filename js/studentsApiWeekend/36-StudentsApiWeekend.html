@@ -109,22 +109,13 @@
         const table = document.querySelector(".table");
         dataArr.forEach((student) => {
           //---------------===-----------------\\
-          const runArr = [
-            "id",
-            "firstName",
-            "lastName",
-            "capsule",
-            "age",
-            "city",
-            "gender",
-            "hobby",
-          ];
+          const runArr = ["id", "firstName", "lastName", "capsule", "age", "city", "gender", "hobby"];
 
           runArr.forEach((column) => {
             const element = document.createElement("div");
             element.classList.add("cell");
-            //element.setAttribute("contenteditable", true);
             element.dataset.id = student.id;
+            element.dataset.type = column;
             element.textContent = student[column];
             table.appendChild(element);
           });
@@ -132,14 +123,16 @@
           const element = document.createElement("div");
           element.classList.add("cell");
           element.dataset.id = student.id;
+          element.dataset.type = "button";
           element.innerHTML = `<button data-id=${student.id} class="btn editBtn">Edit</button> <button data-id=${student.id} class="btn delBtn">Delete</button>`;
           table.appendChild(element);
         });
 
         const delBtn = document.querySelectorAll(".delBtn");
-        delBtn.forEach((button) =>
-          button.addEventListener("click", deleteFunc)
-        );
+        delBtn.forEach((button) => button.addEventListener("click", deleteFunc));
+
+        const editBtn = document.querySelectorAll(".editBtn");
+        editBtn.forEach((button) => button.addEventListener("click", editFunc));
       }
 
       const search = (event) => {
@@ -148,11 +141,7 @@
 
         dataArr.forEach((student) => {
           const row = document.querySelectorAll(`[data-id="${student.id}"]`);
-          if (
-            String(student[searchDropPick])
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase())
-          ) {
+          if (String(student[searchDropPick]).toLowerCase().includes(searchTerm.toLowerCase())) {
             row.forEach((cell) => {
               cell.classList.remove("hidden");
             });
@@ -179,17 +168,88 @@
       });
 
       const deleteFunc = (e) => {
-          const row = document.querySelectorAll(`[data-id="${e.target.getAttribute("data-id")}"]`);
-          row.forEach((element)=>{
-             element.remove();
+        const row = document.querySelectorAll(`[data-id="${e.target.getAttribute("data-id")}"]`);
+        row.forEach((element) => {
+          element.remove();
         });
-          //console.log(row);
-    }
-      
-    const edit = () => {
+        //console.log(row);
+      };
 
-    }
-    
+      const editFunc = (event) => {
+        const types = { firstName: "text", lastName: "text", capsule: "number", age: "number", city: "text", gender: "text", hobby: "text" };
+
+        //console.log(event.target.previousElementSibling);
+        //document.querySelector(".editBtn").nextElementSibling;
+        const row = document.querySelectorAll(`[data-id="${event.target.parentElement.dataset.id}"]`);
+        row.forEach((element) => {
+          if (element.dataset.type !== "id" && element.dataset.type !== "button" && element.dataset.type) {
+            const input = document.createElement("input");
+            input.value = element.textContent;
+            input.type = types[element.dataset.type];
+            if (input.type === "number") {
+              input.min = 0;
+            }
+            element.textContent = "";
+            element.appendChild(input);
+            if (element.dataset.type === "gender") {
+              element.innerHTML = `<select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Alien">Alien</option>
+            </select>`;
+            }
+          }
+        });
+        const cancel = document.createElement("button");
+        cancel.textContent = "Cancel";
+        cancel.classList.add("cancelBtn");
+        event.target.nextElementSibling.replaceWith(cancel);
+        const save = document.createElement("button");
+        save.textContent = "Save";
+        save.classList.add("saveBtn");
+        event.target.replaceWith(save);
+        console.log(event.target.nextElementSibling);
+        cancel.addEventListener("click", cancelFunc);
+        save.addEventListener("click", saveFunc);
+      };
+
+      cancelFunc = (event) => {
+        const person = dataArr.find((student) => {
+          return String(student.id) === event.target.parentElement.dataset.id;
+        });
+
+        const row = document.querySelectorAll(`[data-id="${event.target.parentElement.dataset.id}"]`);
+        row.forEach((element, index) => {
+          element.innerHTML = person[element.dataset.type];
+        });
+        console.dir(row);
+        Array.from(row).pop().innerHTML = `<button data-id=${person.id} class="btn editBtn">Edit</button> <button data-id=${person.id} class="btn delBtn">Delete</button>`;
+        const btnContainer = Array.from(row).pop();
+        btnContainer.querySelector(".delBtn").addEventListener("click", deleteFunc);
+        btnContainer.querySelector(".editBtn").addEventListener("click", editFunc);
+      };
+
+      saveFunc = (event) => {
+        const person = dataArr.find((student) => {
+          return String(student.id) === event.target.parentElement.dataset.id;
+        });
+
+        const row = document.querySelectorAll(`[data-id="${event.target.parentElement.dataset.id}"]`);
+        row.forEach((element) => {
+          if (element.dataset.type !== "id") {
+            element.innerHTML = element.firstElementChild.value;
+            if (element.dataset.type !== "button") {
+              person[element.dataset.type] = element.textContent;
+            }
+          }
+        });
+        Array.from(row).pop().innerHTML = `<button data-id=${person.id} class="btn editBtn">Edit</button> <button data-id=${person.id} class="btn delBtn">Delete</button>`;
+        const btnContainer = Array.from(row).pop();
+        btnContainer.querySelector(".delBtn").addEventListener("click", deleteFunc);
+        btnContainer.querySelector(".editBtn").addEventListener("click", editFunc);
+      };
+
+      //saveFunc;
 
       // //---------------===-----------------\\
       //     const id = document.createElement("div");
@@ -213,7 +273,6 @@
       //        const row = document.createElement("div")
       //        row.classList.add("cell");
       //}
-
     </script>
   </body>
 </html>
