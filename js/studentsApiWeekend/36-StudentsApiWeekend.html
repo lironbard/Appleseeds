@@ -4,18 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
     <title>Document</title>
   </head>
   <style>
     * {
       box-sizing: border-box;
       padding: 0;
-      margin: 10px;
+      margin: 0;
+      background-color: cornflowerblue;
+      font-family: "Roboto", sans-serif, monospace;
     }
     .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .inputSearch {
+      margin-left: 40%;
     }
 
     .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .table {
@@ -25,10 +39,12 @@
 
     .tableHeader {
       position: sticky;
+      border: 1px solid black;
     }
 
     .cell {
-      padding: 3px;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
     }
 
     .hidden {
