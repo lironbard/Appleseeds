@@ -13,13 +13,19 @@
       box-sizing: border-box;
       padding: 0;
       margin: 0;
-      background-color: cornflowerblue;
       font-family: "Roboto", sans-serif, monospace;
     }
+
+    .screen {
+      background-color: cornflowerblue;
+    }
+
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: cornflowerblue;
+      z-index: 2;
     }
 
     .inputSearch {
@@ -30,6 +36,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: cornflowerblue;
     }
 
     .table {
@@ -45,6 +52,38 @@
     .cell {
       border-left: 1px solid black;
       border-right: 1px solid black;
+    }
+
+    .editBtn {
+      font-size: larger;
+      background: silver;
+      color: seagreen;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .delBtn {
+      font-size: larger;
+      background: silver;
+      color: crimson;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .saveBtn {
+      font-size: larger;
+      background: silver;
+      color: green;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .cancelBtn {
+      font-size: larger;
+      background: silver;
+      color: rgb(rgb(44, 38, 38), green, blue);
+      border-radius: 5px;
+      font-weight: bold;
     }
 
     .hidden {
