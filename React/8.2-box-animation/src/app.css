@@ -1,0 +1,26 @@
+.box {
+  background-color: aqua;
+  height: 100px;
+  width: 100px;
+  border: 1px solid blue;
+  position: relative;
+  left: 0;
+}
+
+.pop-in {
+  -webkit-animation: popAnimation 1s ease-in;
+}
+
+.pop-out {
+  -webkit-animation: popAnimation 1s ease-in;
+  animation-direction: reverse;
+}
+
+@-webkit-keyframes popAnimation {
+  0% {
+    left: -100px;
+  }
+  100% {
+    right: 0px;
+  }
+}
