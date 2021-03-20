@@ -1,0 +1,25 @@
+div {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+.green {
+  background: chartreuse;
+}
+
+.blue {
+  background: cornflowerblue;
+}
+
+.red {
+  background: crimson;
+}
+
+.orange {
+  background: darkgoldenrod;
+}
+
+.circle {
+  border-radius: 50px;
+}
