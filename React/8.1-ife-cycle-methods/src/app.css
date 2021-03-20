@@ -1,0 +1,13 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box {
+  background-color: aqua;
+  height: 100px;
+  width: 100px;
+  border: 1px solid blue;
+}
