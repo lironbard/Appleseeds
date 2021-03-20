@@ -1,0 +1,28 @@
+.dice {
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.dice1 {
+  background-image: url("./pics/dice1.png");
+}
+.dice2 {
+  background-image: url("./pics/dice2.png");
+}
+.dice3 {
+  background-image: url("./pics/dice3.png");
+}
+.dice4 {
+  background-image: url("./pics/dice4.png");
+}
+.dice5 {
+  background-image: url("./pics/dice5.png");
+}
+.dice6 {
+  background-image: url("./pics/dice6.png");
+}

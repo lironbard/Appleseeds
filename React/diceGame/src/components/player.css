@@ -1,0 +1,9 @@
+.currentPlayer {
+  border: 3px solid blueviolet;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
