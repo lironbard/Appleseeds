@@ -1,0 +1,1 @@
+ Create a new txt file using the same fs module method we have learned before
