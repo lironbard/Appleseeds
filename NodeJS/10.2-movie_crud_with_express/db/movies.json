@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Harry Potter",
+    "rating": "95",
+    "genre": "fantasy",
+    "length": "120"
+  },
+  {
+    "id": "2",
+    "title": "Scream",
+    "rating": "70",
+    "genre": "Horror",
+    "length": "111"
+  },
+  {
+    "id": "3",
+    "title": "Rocky",
+    "rating": "55",
+    "genre": "Action",
+    "length": "97"
+  }
+]
