@@ -23,8 +23,19 @@ app.get("/api/users", (req, res) => {
 //-----------Show specific users------\\
 app.get("/api/users/:id", (req, res) => {
   try {
-    getUser(req.params.id);
+    const user = getUser(req.params.id);
     res.status(200).send(user);
+  } catch (e) {
+    res.status(400).send({ error: e.message });
+  }
+});
+//----------END----------------\\
+
+//-----------Update credit------\\
+app.put("/api/users/:id", (req, res) => {
+  try {
+    updateCredit(req.params.id, req.body);
+    res.status(200).send("User updated");
   } catch (e) {
     res.status(400).send({ error: e.message });
   }

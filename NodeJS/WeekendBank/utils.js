@@ -22,8 +22,9 @@ const loadUsers = () => {
 //---Getting single User---\\
 const getUser = (id) => {
   let users = loadUsers();
-  const user = users.find((el) => el.id === id);
-  user ? user : console.log("user not found");
+  const user = users.find((el) => el.passport_id === id);
+  if (user) return user;
+  throw new Error("User not found");
 };
 //-----------END-----------\\
 
@@ -36,7 +37,18 @@ const deposit = () => {};
 //-----------END-----------\\
 
 //---Update e users credit---\\
-const updateCredit = () => {};
+const updateCredit = (id, { credit }) => {
+  let users = loadUsers();
+  let user = users.find((el) => el.passport_id === id);
+  if (!user) throw new Error("User not found");
+  user = Object.assign(user, {
+    credit: credit ? credit : user.credit,
+  });
+  saveUsers(user);
+};
+const saveUsers = (user) => {
+  fs.writeFileSync(__dirname + "/users.json", JSON.stringify(user));
+};
 //-----------END-----------\\
 
 //---Withdraw money from the user with cash---\\
