@@ -1,0 +1,7 @@
+[
+  { "passport_id": "1", "cash": -30, "credit": 100 },
+  { "passport_id": "2", "cash": 60, "credit": 0 },
+  { "passport_id": "3", "cash": 0, "credit": 0 },
+  { "passport_id": "4", "cash": 0, "credit": 0 },
+  { "passport_id": "5", "cash": 0, "credit": 0 }
+]
