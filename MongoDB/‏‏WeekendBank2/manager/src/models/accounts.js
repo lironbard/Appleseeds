@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 
 //--== Creating Account Schema ==--\\
 
-const Account = mongoose.model("accounts", {
+const Account = mongoose.model("account", {
   user_id: {
     type: ObjectId,
     required: true,

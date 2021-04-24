@@ -1,6 +1,7 @@
 require("./db/mongoose");
 const User = require("./models/user");
 const Account = require("./models/accounts");
+const Transaction = require("./models/transaction");
 const { ObjectID } = require("mongodb");
 
 //--==addUser==--\
@@ -35,7 +36,7 @@ const updateAccount = async (accountId, amount) => {
 };
 
 //--==transferMoney==--\\
-const makeTransition = async (transferringAccountId, receivingAccountId, amount) => {
+const transferMoney = async (transferringAccountId, receivingAccountId, amount) => {
   let transferringAccount = await Account.findById(transferringAccountId);
   let receivingAccount;
 
@@ -43,11 +44,19 @@ const makeTransition = async (transferringAccountId, receivingAccountId, amount)
   if (transferringAccount.cash > amount || transferringAccount.credit > Math.abs(transferringAccount.cash - amount)) {
     transferringAccount = await updateAccount(transferringAccountId, amount * -1);
     receivingAccount = await updateAccount(receivingAccountId, amount);
+
+    transaction = new Transaction({
+      amount,
+      transferringAccount: transferringAccount,
+      receivingAccount: receivingAccount,
+    });
+
+    await transition.save();
   } else {
     return "cash is too low to make that transfer";
   }
 
-  return { transferringAccount, receivingAccount };
+  return { transferringAccount, receivingAccount, transaction };
 };
 
-module.exports = { createUser, makeTransition, updateAccount };
+module.exports = { createUser, transferMoney, updateAccount };
