@@ -32,11 +32,11 @@ router.delete("/transactions/:id", async (req, res) => {
   }
 });
 
-router.post("/transactions/", async (req, res) => {
+router.post("/transactions", async (req, res) => {
   try {
     const transaction = await transferMoney(req.body.transferringAccount, req.body.receivingAccount, req.body.amount);
 
-    res.status(200).send(transition);
+    res.status(200).send(transaction);
   } catch (e) {
     res.status(400).send(e.message);
   }

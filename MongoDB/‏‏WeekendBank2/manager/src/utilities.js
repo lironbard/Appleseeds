@@ -9,6 +9,7 @@ const createUser = (details) => {
   const user = new User({
     name: details.name,
     email: details.email,
+    passport_id: details.passport_id,
   });
 
   const userAccount = new Account({
@@ -19,16 +20,19 @@ const createUser = (details) => {
   try {
     user.save().then(() => console.log("The user " + user + " has been created!"));
     userAccount.save().then(() => console.log("The account" + userAccount + "has been created!"));
+    return { user, userAccount };
   } catch (e) {
     throw new Error(e);
   }
-
-  return { user, userAccount };
 };
 
 //--==updateCredit==--\\
 const updateAccount = async (accountId, amount) => {
-  const account = await Account.findById(accountId);
+  const account = await Account.findOne({ user_id: accountId });
+
+  if (!account) {
+    throw new Error("No account found");
+  }
 
   // receivingUser.cash += amount;
   const updatedAccount = await Account.findByIdAndUpdate(account._id, { $inc: { cash: amount } }, { new: true });
@@ -37,8 +41,12 @@ const updateAccount = async (accountId, amount) => {
 
 //--==transferMoney==--\\
 const transferMoney = async (transferringAccountId, receivingAccountId, amount) => {
-  let transferringAccount = await Account.findById(transferringAccountId);
+  let transferringAccount = await Account.findOne({ user_id: transferringAccountId });
   let receivingAccount;
+
+  if (!transferringAccount) {
+    throw new Error("No account found");
+  }
 
   // Looking for sufficient funds - Credit + Cash
   if (transferringAccount.cash > amount || transferringAccount.credit > Math.abs(transferringAccount.cash - amount)) {
@@ -51,7 +59,7 @@ const transferMoney = async (transferringAccountId, receivingAccountId, amount) 
       receivingAccount: receivingAccount,
     });
 
-    await transition.save();
+    await transaction.save();
   } else {
     return "cash is too low to make that transfer";
   }
