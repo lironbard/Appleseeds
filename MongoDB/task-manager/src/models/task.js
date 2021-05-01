@@ -17,7 +17,14 @@ const Task = mongoose.model("Task", {
     type: Boolean,
     default: false,
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
 });
+
+module.exports = Task;
 
 //----Creating new task------\\
 // const task = new Task({
@@ -33,5 +40,3 @@ const Task = mongoose.model("Task", {
 //   .catch((error) => {
 //     console.log("Error: ", error);
 //   });
-
-module.exports = Task;
