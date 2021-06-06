@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterating Over Data</title>
+  </head>
+  <body
+    ng-init="customers=[{joined: '2000-12-02',name: 'John', city: 'New York',orderTotal:9.9956},{joined: '2000-11-01',name: 'Dave', city: 'TLV',orderTotal: 20.22},{joined: '2000-10-01',name: 'Tina', city: 'Bangkok',orderTotal: 300.111}]"
+  >
+    <h2>Customers</h2>
+    Filter: <input type="text" ng-model="customerFilter.name" /> <br /><br />
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Order</th>
+        <th>Joined</th>
+      </tr>
+      <tr ng-repeat="cust in customers |filter: customerFilter | limitTo:3| orderBy:'name'">
+        <td>{{cust.name | uppercase}}</td>
+        <td>{{cust.city | lowercase}}</td>
+        <td>{{cust.orderTotal | currency}}</td>
+        <!-- <td>{{cust.orderTotal | currency:'y'}}</td> -->
+        <td>{{cust.joined | date}}</td>
+        <!-- <td>{{cust.joined | date:'yyyy-MM-dd'}}</td> -->
+        <!-- <td>{{cust.joined | date:'longDate'}}</td> -->
+      </tr>
+    </table>
+
+    <script src="angular.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterating Over Data</title>
+  </head>
+  <body ng-init="people=[{name: 'John', city: 'New York'},{name: 'Dave', city: 'TLV'},{name: 'Tina', city: 'Bangkok'}]">
+    <ul>
+      <li ng-repeat="person in people">{{person.name}} {{ person.city}}</li>
+    </ul>
+
+    <br />
+
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>City</td>
+      </tr>
+      <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td>{{person.city}}</td>
+      </tr>
+    </table>
+
+    <script src="angular.js"></script>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>More on Directives</title>
+  </head>
+  <body ng-init="data={name='James',isVisible: true,loggedIn: true,status: 'red'}">
+    <div ng-cloak>
+      <div ng-switch on="data.loggedIn">
+        <div ng-switch-when="true" ng-class="data.status">Welcome {{data.name}}</div>
+        <div ng-switch-default ng-class="data.status">Login</div>
+      </div>
+      <br />
+      <div ng-show="data.isVisible">
+        Name: <input type="text" ng-model="data.name" />
+        {{data.name}}
+      </div>
+    </div>
+
+    <script src="angular.js"></script>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" />
+    <title>Using Directives</title>
+  </head>
+  <body ng-init="name='James'">
+    <div ng-hide="isHidden">
+      Name: <input type="text" ng-model="name" />
+      {{name}}
+      <span ng-bind="name"></span>
+    </div>
+
+    Hide: <input type="checkbox" ng-model="isHidden" />
+    <br />
+    <button ng-click="name='Lavender'">Change Name</button>
+    <script src="angular.js"></script>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AngularJS Hello World</title>
+  </head>
+  <body>
+    Name: <input type="text" ng-model="name" />
+    <br />
+    {{name}}
+
+    <script src="angular.js"></script>
+  </body>
+</html> -->
