@@ -1,21 +1,18 @@
 (function () {
-  var customerFactory = function () {
+  var customerFactory = function ($http) {
     var factory = {};
     factory.getCustomers = function () {
-      return customers;
+      return $http.get("/customers");
     };
 
     factory.getCustomers = function (customerId) {
-      for (var i = 0, len = customers.length; i < len; i++) {
-        if (customers[i].id === parseInt(customerId)) {
-          return customers[i];
-        }
-      }
-      return {};
+      return $http.get("/customers/" + customerId);
     };
 
     return factory;
   };
+
+  customerFactory.$inject = ["$http"];
 
   angular.module("customersApp").factory("customersFactory", customerFactory);
 })();
