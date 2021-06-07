@@ -22,8 +22,8 @@ app.get("/customers/:id", function (req, res) {
 });
 
 app.get("/customers", function (req, res) {
-  res.json(customers);
-  //res.json(500, { error: 'An error has occurred!' });
+  //res.json(customers);
+  res.json(500, { error: "An error has occurred!" });
 });
 
 app.listen(8080);
