@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #d7d7d7;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+  background-color: #d5d5d5;
+  padding: 20px 0px;
+  margin-top: 0px;
+}
+
+ul {
+  list-style: none;
+  font-size: 20px;
+  color: #686868;
+  margin-left: -40px;
+  margin-bottom: 0px;
+}
+
+li {
+  border-bottom: 1px solid#ededed;
+  background-color: #f4f4f4;
+  padding: 10px 0px;
+  margin-bottom: 8px;
+}
