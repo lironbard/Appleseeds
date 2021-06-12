@@ -6,6 +6,10 @@ app.config(function ($routeProvider) {
       controller: "myListController",
       templateUrl: "views/myList.html",
     })
+    .when("/saved", {
+      controller: "savedController",
+      templateUrl: "views/saved.html",
+    })
     .otherwise({
       redirectTo: "/",
     });

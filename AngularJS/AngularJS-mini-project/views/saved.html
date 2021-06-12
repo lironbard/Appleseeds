@@ -1,0 +1,10 @@
+<div class="main" ng-app="myList" ng-controller="savedController">
+  <h1>Saved Items List:</h1>
+  <!-- <div class="addItem">
+      <input ng-model="newItem" class="addText" placeholder="Add an item" />
+      <button ng-click="pushItem()">Add to List</button>
+    </div> -->
+  <ul>
+    <li ng-repeat="i in items">{{i}}</li>
+  </ul>
+</div>
